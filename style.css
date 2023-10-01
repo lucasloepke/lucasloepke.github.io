@@ -18,11 +18,6 @@ p {
     font-weight: 500;
 }
 
-img {
-  width: 400px,
-  height: auto
-}
-
 .fadeIn {
 	opacity: 0;
 }
