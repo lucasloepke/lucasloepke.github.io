@@ -1,146 +1,15 @@
 <!DOCTYPE html>
-<meta name="format-detection" content="telephone=no">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <html>
 	<head>
-		<title> Johanna Loepke </title>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-		<script src="script.js"></script>
+		<title> Lucas Loepke </title>
 	</head>
 
 	<body id = "override-bootstrap">
 	<div class="icons jumboFadeIn"> 
-		<a href="https://github.com/johannaloepke"> 
+		<a href="https://github.com/lucasloepke"> 
 			<img src="Images/githubicon.png" alt= "My GitHub"></a>
-		<a href="https://www.linkedin.com/in/johannaloepke">
+		<a href="https://www.linkedin.com/in/lucasloepke">
 			<img src="Images/linkedin.png" alt="My LinkedIn"></a>
-		<a href="Johanna_Loepke_Resume.pdf">
-			<img src="Images/resume.png" alt="My Resume"></a>
-	</div>
-	<div class="jumbotron jumboFadeIn">
-		<div class="memo"> Click anywhere to see NASA's Pic of the Day! </div>
-		<div class="title">Johanna Loepke</div>
-		<nav class="caption">
-			<a href="#about">About Me</a>
-			<a href="#project">Projects</a>
-			<a href="#edu">Education</a>
-		</nav>
-	</div>
-	<div class="container fadeIn">
-		<div id="about"> <h2> About Me </h2> 
-		</div>
-		<div class="row">
-			<img src="Images/surf.jpg" alt="A photo of me surfing the waters of Wakiki Beach, Hawaii" class="myPic"/>
-			<div class="col-md-5">
-				<p class="bio"> Hi, my name is Johanna! 👋 </p>
-				<p class="bio"> I'm a senior at Northeastern University who loves learning new things, solving puzzles & hard problems, and wants to create positive change in the world. </p>
-				<p class="bio"> So far, I've worked at Microsoft, Intuit, Certain Lending, and Asics. </p>
-				<p class="bio"> My favorite hobbies include surfing waves & scuba diving, cooking without a recipe, and buying more books than I can read. </p>
-			</div>
-		</div>
-	</div>
-	<div class="container fadeIn">
-		<div id="project"> <h2> Projects </h2> </div>
-		<div class="row">
-			<h4> Solar System in Virtual Reality 🔭</h4>
-			<p class="hack"> Created a Google Cardboard VR space simulation at HackMIT using Unity and C# scripts (with an Easter egg on Pluto!). Download .apk <a href="https://github.com/johannaloepke/VR-Solar-System/blob/master/FinalGame.apk" class="apk" download> here </a> </p>
-		</div>
-	</div>
-			
-	<div id="photobanner">
-		<div class="photos fadeIn">
-			<img class="first" src="Images/VRPic1.jpg" alt="Screenshot of VR experience: Mars, Jupiter, Uranus and Neptune with an arm of the Milky Way"/>
-    		<img src="Images/VRPic3.jpg" alt="Screenshot of VR experience: The Earth and its Moon"/>
-    		<img src="Images/VRPic2.jpg" alt="Screenshot of VR experience: The Sun"/>
-    		<img src="Images/VRPic4.jpg" alt="Screenshot of VR experience: The Earth, the Moon, and Saturn"/>
-    		<img src="Images/VRPic1.jpg" alt="Screenshot of VR experience: Mars, Jupiter, Uranus and Neptune with an arm of the Milky Way"/>
-    		<img src="Images/VRPic3.jpg" alt="Screenshot of VR experience: The Earth and its Moon"/>
-    	</div>
-	   </div>
-	   
-	<div class="container fadeIn">
-		<div class="row">
-			<h4> Instant Aux 🎵</h4>
-			<p class="hack"> Unsure about what kind of music to play for a group of people? Whether at a party or on a roadtrip, this Vue.js app will generate a unique list of Spotify recommendations based on chosen genres, artists, and track attributes. Click the picture to see it in action! </p>
-			<div class="photo">
-				<a href="https://johannaloepke.github.io/instant-aux">
-					<img class="auxImg"src="Images/instant-aux.jpg" alt="The UI of the Instant Aux app, showing genres to choose from."/> 
-				</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="container fadeIn">
-		<div class="row">
-			<h4> Wines of the World Map 🍷</h4>
-			<p class="hack"> An in-progress interactive map of global wine regions and their grape varietals - uses custom GeoJSON, QGIS, and amCharts</p>
-			<div class="photo">
-				<img class="wineImg" src="Images/wine.jpg" alt="A map of France's wine regions, so far it includes data on Bordeaux and Alsace."/>
-			</div>
-		</div>
-	</div>
-
-   	<div class="container fadeIn">
-		<div class="row">
-			<h4> Music Editor 🎛</h4>
-			<p class="hack"> Java Swing GUI implementation of a MIDI music editor which utilizes the MVC design pattern. You can import existing MIDI files or create something new with click and drag notes, tempo adjustments, dynamics, and repeats. Created in Object-Oriented Design. </p>
-			<div class="photo">
-				<img src="Images/midi.jpg" alt="Sample piece of music, with colored notes displayed on a key by measure grid."/>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div id="edu" class="fadeIn"> <h2> Education </h2> </div>
-		<div class="row">
-			<div class="col-md-offset-5 fadeIn">
-				<p> I'm working towards a 2020 Bachelor's degree in Computer Science and Cognitive Psychology at Northeastern University in Boston, MA.</p>
-				<h3> Classes </h3>
-				<p> Click the name for more information! <p>
-				<br>
-				<div class="fadeIn" id="descriptions">
-  					<h5 class="toggle"> Fundamentals of Computer Science 1: </h5>
-  					<div class="content">
-    					<p> Worked in Dr. Racket, using ISL, a functional Scheme-type language to introduce the basics of computation. </p>
-  					</div>
-  					<h5 class="toggle">Fundamentals of Computer Science 2:</h5>
-  					<div class="content">
-    					<p> Worked in Eclipse, using Java to understand the principles of class based program design. </p>
-  					</div>
-  					<h5 class="toggle"> Logic and Computation: </h5>
-  					<div class="content">
-    					<p> Proved program correctness with ACL2s. </p>
-  					</div>
-  					<h5 class="toggle"> Object-Oriented Design: </h5>
-  					<div class="content">
-    					<p> A rigorous course in object-oriented programming and design, with an emphasis on abstraction, modularity, and code reuse as applied to the building and understanding of large-scale systems. </p>
-  					</div>
-  					<h5 class="toggle"> Algorithms & Data: </h5>
-  					<div class="content">
-    					<p> Discussed the principles and techniques for the design, analysis, and implementation of efficient algorithms and data representations. </p>
-  					</div>
-  					<h5 class="toggle"> Computer Systems: </h5>
-  					<div class="content">
-    					<p> Compared programming in MIPS Assembly to high-level C, studied the structures of an operating system, and learned about caches and virtual memory. </p>
-  					</div>
-  					<h5 class="toggle"> Human Computer Interaction: </h5>
-  					<div class="content">
-    					<p> Designed and developed an Android app on a team, which curates local Boston activities aimed at university students. Experienced an in-depth process of storyboarding, wireframing, creating prototypes, user/usability testing, and revising our MVP.</p>
-  					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	</body>
-
-	<footer>
-		<img src="Images/footer.jpg" alt="">
-		<div class="reach"> Feel free to reach out at: </div>
-		<div class="email"> johanna.loepke@gmail.com </div>
-	</footer>
 </html>
