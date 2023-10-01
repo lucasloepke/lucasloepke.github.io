@@ -26,3 +26,29 @@ body {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
  }
+
+@media (min-width: 1200px) {
+	#override-bootstrap .container {
+		width: 85vw;
+	}
+	#override-bootstrap h5 {
+		margin-bottom: 1.5vw;
+		margin-top: 1vw;
+	}
+	#override-bootstrap h2, h3, h4 {
+		margin-top: 3vw;
+	}
+}
+
+@media (max-width: 1080px) {
+	#override-bootstrap h2 {
+		margin-top: 1vw;
+	}
+	.jumbotron .caption a {
+		margin-left: 10vw;
+		font-size: 4vw;
+	}
+	.jumbotron .title {
+		margin-top: 33vh;
+	}
+}
