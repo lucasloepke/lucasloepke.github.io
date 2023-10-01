@@ -15,11 +15,34 @@ div {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-h1 {
+h2 {
 	color: #3BC6F8;
 	font-size: 7vw;
 	font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
+}
+
+h3 {
+	color: #3BC6F8;
+	font-size: 5.5vw;
+	font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
+
+h4 {
+	position: relative;
+	padding-left: 20px;
+	color: #0E3771;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 4.5vw;
+    font-weight: 700;
+}
+
+h5 {
+	color: #9AA5AA;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 2.3vw;
+    font-weight: 600;
 }
 
 .fadeIn {
