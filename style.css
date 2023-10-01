@@ -52,3 +52,14 @@ body {
 		margin-top: 33vh;
 	}
 }
+
+/* Header */
+.icons {
+	position: absolute;
+	text-align: left;
+	top: 0;
+	left: 0;
+	padding-top: 1vw;
+	padding-left: 1vw;
+	z-index: 999;  /* places the icons in front of jumbotron */
+}
