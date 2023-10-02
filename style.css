@@ -18,10 +18,11 @@ p {
     font-weight: 500;
 }
 
-.img1 {
+.imgs {
   border: 5px;
   border-color: #9999ff;
   border-style: solid;
+  display: inline-block;
   border-top-style: dotted;
   border-right-style: solid;
   border-bottom-style: dotted;
