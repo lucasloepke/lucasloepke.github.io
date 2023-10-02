@@ -23,10 +23,7 @@ p {
   border-color: #ccd9ff;
   border-radius: 5px;
   display: inline-block;
-  border-top-style: solid;
-  border-right-style: dotted;
-  border-bottom-style: solid;
-  border-left-style: dotted;
+  border-style: double;
 }
 
 .fadeIn {
