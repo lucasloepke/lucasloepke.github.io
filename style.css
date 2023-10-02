@@ -18,6 +18,10 @@ p {
     font-weight: 500;
 }
 
+img {
+  border: 5px solid #6b7db3;
+}
+
 .fadeIn {
 	opacity: 0;
 }
