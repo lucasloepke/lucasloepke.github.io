@@ -19,8 +19,9 @@ p {
 }
 
 .img1 {
-  border: 50px solid;
+  border: 50px;
   border-color: #9999ff;
+  border-style: solid;
   border-top-style: dotted;
   border-right-style: solid;
   border-bottom-style: dotted;
