@@ -1,7 +1,7 @@
 body {
-  margin: 0;
-  background: #6b7db3;
-  text-align: center;
+	margin: 0;
+	background: #6b7db3;
+	text-align: center;
 }
 
 h1 {
@@ -9,13 +9,13 @@ h1 {
 	padding-top: 20px;
 	font-size: 2vw;
 	font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700;
+	font-weight: 700;
 }
 p {
 	color: #ffffff;
 	font-size: 1.5vw;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 500;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 500;
 }
 
 .imgs {
@@ -52,18 +52,18 @@ p {
 .icons img {	
 	width: 5vh;
 	-webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
 }
 
 .icons img:hover {
 	-webkit-transform: rotate(10deg);
-    -moz-transform: rotate(10deg);
-    -o-transform: rotate(10deg);
-    -ms-transform: rotate(10deg);
-    transform: rotate(10deg);
+	-moz-transform: rotate(10deg);
+	-o-transform: rotate(10deg);
+	-ms-transform: rotate(10deg);
+	transform: rotate(10deg);
 	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -78,10 +78,10 @@ p {
  }
 
  .jumboFadeIn {
-	-webkit-animation-name: jumboFadeIn;
-	animation-name: jumboFadeIn;
-	-webkit-animation-duration: 2s;
-    animation-duration: 2s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+	 -webkit-animation-name: jumboFadeIn;
+	 animation-name: jumboFadeIn;
+	 -webkit-animation-duration: 2s;
+	 animation-duration: 2s;
+	 -webkit-animation-fill-mode: both;
+	 animation-fill-mode: both;
  }
