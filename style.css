@@ -35,6 +35,7 @@ p {
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	width: 60%;
 	height: 80%;
+	overflow: hidden;
 }
 
 .fadeIn {
