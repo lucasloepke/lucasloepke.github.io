@@ -38,55 +38,6 @@ p {
 	overflow: hidden;
 }
 
-.fadeIn {
-	opacity: 0;
-}
-
- @-webkit-keyframes jumboFadeIn {
-	0% {opacity: 0;}
-	100% {opacity: 1;}
- }
- 
- @keyframes jumboFadeIn {
-	0% {opacity: 0;}
-	100% {opacity: 1;}
- }
-
- .jumboFadeIn {
-	-webkit-animation-name: jumboFadeIn;
-	animation-name: jumboFadeIn;
-	-webkit-animation-duration: 2s;
-    animation-duration: 2s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
- }
-
-@media (min-width: 1200px) {
-	#override-bootstrap .container {
-		width: 85vw;
-	}
-	#override-bootstrap h5 {
-		margin-bottom: 1.5vw;
-		margin-top: 1vw;
-	}
-	#override-bootstrap h2, h3, h4 {
-		margin-top: 3vw;
-	}
-}
-
-@media (max-width: 1080px) {
-	#override-bootstrap h2 {
-		margin-top: 1vw;
-	}
-	.jumbotron .caption a {
-		margin-left: 10vw;
-		font-size: 4vw;
-	}
-	.jumbotron .title {
-		margin-top: 33vh;
-	}
-}
-
 /* Header */
 .icons {
 	position: absolute;
@@ -97,7 +48,6 @@ p {
 	padding-left: 1vw;
 	z-index: 999;
 }
-
 
 .icons img {	
 	width: 5vh;
@@ -116,3 +66,22 @@ p {
     transform: rotate(10deg);
 	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
 }
+
+@-webkit-keyframes jumboFadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+ }
+ 
+ @keyframes jumboFadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+ }
+
+ .jumboFadeIn {
+	-webkit-animation-name: jumboFadeIn;
+	animation-name: jumboFadeIn;
+	-webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+ }
