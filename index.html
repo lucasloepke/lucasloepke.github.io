@@ -29,9 +29,23 @@
   </div>
 
   <div class="projects">
-    <h1>Projects:</h1>
+    <h1 id="projects-header">Projects:</h1>
     <iframe class="flowle" src="https://lucasloepke.github.io/flowle"></iframe>
     <p>Won best beginner project at Pitt CSC Hacks 2023: <a href="https://github.com/lucasloepke/flowle">Github</a></p>
   </div>
+
+  <script>
+    document.addEventListener("scroll", function () { // Change "Projects:" color for visibility
+        const header = document.getElementById("projects-header");
+        const projectsSection = document.querySelector(".projects");
+        const rect = projectsSection.getBoundingClientRect();
+        
+        const triggerPoint = window.innerHeight * 0.25;
+        
+        if (rect.top < triggerPoint) {
+            header.style.color = "#00264d";
+        } else header.style.color = "#ffffff";
+    });
+    </script>    
 </body>
 </html>
