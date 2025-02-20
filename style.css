@@ -22,7 +22,9 @@ body {
 	background: #6b7db3;
 	background: #e8ceb1;
 	background-image: url('Images/fullsize.jpg');
-	background-position-y: 21%;
+	background-position-y: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 	text-align: center;
 }
 
@@ -38,6 +40,7 @@ h1 {
 	font-family: "72";
 	font-weight: 700;
 }
+
 p {
 	color: #ffffff;
 	font-size: 1.5vw;
