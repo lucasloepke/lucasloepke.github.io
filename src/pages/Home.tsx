@@ -98,11 +98,11 @@ export function Home() {
 
       <section className="border-t border-neutral-200 py-16 dark:border-neutral-800">
         <Container>
-          <div className="mb-8 flex items-end justify-between gap-4">
+          <div className="mb-8 flex items-center justify-between gap-4">
             <SectionHeading>Featured Projects</SectionHeading>
             <Link
               to="/projects"
-              className="text-sm font-medium text-accent transition-colors duration-150 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-neutral-950"
+              className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"
             >
               View all →
             </Link>
