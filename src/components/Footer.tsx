@@ -43,7 +43,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-6 text-center text-sm text-neutral-500 dark:text-neutral-400">
-          © {new Date().getFullYear()} Lucas Loepke. Built with React + Vite.
+          © {new Date().getFullYear()} Lucas Loepke. Built with React, Vite, Tailwind, and Cursor.
         </p>
       </div>
     </footer>
