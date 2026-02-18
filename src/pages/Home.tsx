@@ -78,7 +78,7 @@ export function Home() {
         <section className="relative z-10 py-16">
           <div className="route-transition">
             <Container>
-              <SectionHeading className="mb-8 text-neutral-50">About</SectionHeading>
+              <SectionHeading className="mb-8 text-white">About</SectionHeading>
               <div className="max-w-2xl space-y-4 text-neutral-200/75">
                 <p>
                   I enjoy building reliable, well-structured software systems and care about clean architecture,
@@ -140,7 +140,7 @@ export function Home() {
         <div className="route-transition">
           <Container className="relative z-10 text-neutral-100">
             <div className="mb-8 flex items-center justify-between gap-4">
-              <SectionHeading className="text-neutral-100">Featured Projects</SectionHeading>
+              <SectionHeading className="text-white">Featured Projects</SectionHeading>
               <Link
                 to="/projects"
                 className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"

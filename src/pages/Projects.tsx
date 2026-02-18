@@ -32,7 +32,7 @@ export function Projects() {
       <InteractiveGridPattern className="absolute inset-0 z-0" mousePosition={mousePosition} />
       <div className="relative z-10 route-transition">
       <Container className="text-neutral-100">
-        <SectionHeading className="mb-10 text-neutral-100">Projects</SectionHeading>
+        <SectionHeading className="mb-10 text-white">Projects</SectionHeading>
         <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
