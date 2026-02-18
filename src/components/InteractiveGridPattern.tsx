@@ -153,6 +153,15 @@ export function InteractiveGridPattern({
         }}
       />
 
+      {/* Edge fade to dark blue (left, right, top, bottom) */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, #0b1220 0%, transparent 15%), linear-gradient(to left, #0b1220 0%, transparent 15%), linear-gradient(to bottom, #0b1220 0%, transparent 12%), linear-gradient(to top, #0b1220 0%, transparent 12%)",
+        }}
+      />
+
       {/* Content layer */}
       {children && <div className="relative z-10 h-full w-full">{children}</div>}
     </div>
