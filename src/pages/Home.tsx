@@ -45,14 +45,14 @@ export function Home() {
           <div className="route-transition">
             <Container>
               <div className="max-w-2xl">
-                <p className="text-base text-neutral-200/70">Hi there,</p>
+                <p className="text-base text-neutral-200/70"></p>
                 <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">
-                  I'm Lucas Loepke
+                  Lucas Loepke
                 </h1>
                 <p className="mt-4 text-neutral-200/75">
-                  I'm a student at the University of Pittsburgh studying Computer Science and Economics.{" "}
+                  Computer Science & Economics @ Pitt{" "}
                   <br />
-                  Currently, I help build enterprise iOS apps at SAP.
+                  Building enterprise iOS apps at SAP
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
@@ -82,7 +82,7 @@ export function Home() {
               <div className="max-w-2xl space-y-4 text-neutral-200/75">
                 <p>
                   I enjoy building reliable, well-structured software systems and care about clean architecture,
-                  performance, and writing code that scales beyond small demos. Most of my work centers on mobile
+                  performance, and writing code that scales beyond small demos. My work at SAP centers on mobile
                   development, backend systems, and applied AI.
                 </p>
                 <p>
