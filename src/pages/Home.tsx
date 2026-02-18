@@ -76,20 +76,22 @@ export function Home() {
         </section>
 
         <section className="relative z-10 py-16">
-          <Container>
-            <SectionHeading className="mb-8 text-neutral-50">About</SectionHeading>
-            <div className="max-w-2xl space-y-4 text-neutral-200/75">
-              <p>
-                I enjoy building reliable, well-structured software systems and care about clean architecture,
-                performance, and writing code that scales beyond small demos. Most of my work centers on mobile
-                development, backend systems, and applied AI.
-              </p>
-              <p>
-                Outside of work and school, I build projects in game development and full-stack applications to
-                strengthen my systems design and engineering skills.
-              </p>
-            </div>
-          </Container>
+          <div className="route-transition">
+            <Container>
+              <SectionHeading className="mb-8 text-neutral-50">About</SectionHeading>
+              <div className="max-w-2xl space-y-4 text-neutral-200/75">
+                <p>
+                  I enjoy building reliable, well-structured software systems and care about clean architecture,
+                  performance, and writing code that scales beyond small demos. Most of my work centers on mobile
+                  development, backend systems, and applied AI.
+                </p>
+                <p>
+                  Outside of work and school, I build projects in game development and full-stack applications to
+                  strengthen my systems design and engineering skills.
+                </p>
+              </div>
+            </Container>
+          </div>
         </section>
 
         {/* Taper off aquatic background after About */}
@@ -97,33 +99,35 @@ export function Home() {
       </div>
 
       <section className="py-16">
-        <Container>
-          <SectionHeading className="mb-8">Skills</SectionHeading>
-          <div className="flex flex-col gap-10">
-            {categoryOrder.map((category) => {
-              const list = skillsByCategory.get(category);
-              if (!list?.length) return null;
-              return (
-                <div key={category}>
-                  <h3 className="mb-3 text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                    {category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {list.map((skill) => (
-                      <Chip
-                        key={skill.key}
-                        label={skill.label}
-                        iconSlug={skill.simpleIconSlug}
-                        customIconSvg={skill.customIconSvg}
-                        emoji={skill.emoji}
-                      />
-                    ))}
+        <div className="route-transition">
+          <Container>
+            <SectionHeading className="mb-8">Skills</SectionHeading>
+            <div className="flex flex-col gap-10">
+              {categoryOrder.map((category) => {
+                const list = skillsByCategory.get(category);
+                if (!list?.length) return null;
+                return (
+                  <div key={category}>
+                    <h3 className="mb-3 text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                      {category}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {list.map((skill) => (
+                        <Chip
+                          key={skill.key}
+                          label={skill.label}
+                          iconSlug={skill.simpleIconSlug}
+                          customIconSvg={skill.customIconSvg}
+                          emoji={skill.emoji}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
+                );
+              })}
+            </div>
+          </Container>
+        </div>
       </section>
 
       <section
@@ -133,22 +137,24 @@ export function Home() {
         onMouseLeave={handleGridMouseLeave}
       >
         <InteractiveGridPattern className="absolute inset-0 z-0" mousePosition={mousePosition} />
-        <Container className="relative z-10 text-neutral-100">
-          <div className="mb-8 flex items-center justify-between gap-4">
-            <SectionHeading className="text-neutral-100">Featured Projects</SectionHeading>
-            <Link
-              to="/projects"
-              className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"
-            >
-              View all →
-            </Link>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
-        </Container>
+        <div className="route-transition">
+          <Container className="relative z-10 text-neutral-100">
+            <div className="mb-8 flex items-center justify-between gap-4">
+              <SectionHeading className="text-neutral-100">Featured Projects</SectionHeading>
+              <Link
+                to="/projects"
+                className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"
+              >
+                View all →
+              </Link>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
+            </div>
+          </Container>
+        </div>
       </section>
     </>
   );
