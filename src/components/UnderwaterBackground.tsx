@@ -105,7 +105,7 @@ export function UnderwaterBackground({
       ref={containerRef}
       className={cn("absolute inset-0 overflow-hidden", className)}
       style={{
-        background: "linear-gradient(180deg, #003d5c 0%, #002d44 40%, #001a2e 100%)",
+        background: "linear-gradient(180deg, #003d5c 0%, #002d44 40%, #0b1220 100%)",
       }}
     >
       {/* Caustic light layers */}
@@ -193,7 +193,7 @@ export function UnderwaterBackground({
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3"
         style={{
-          background: "linear-gradient(0deg, rgba(0, 10, 20, 0.8) 0%, transparent 100%)",
+          background: "linear-gradient(0deg, rgba(11, 18, 32, 0.9) 0%, transparent 100%)",
         }}
       />
 
@@ -202,7 +202,7 @@ export function UnderwaterBackground({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 30%, transparent 0%, transparent 50%, rgba(0, 15, 30, 0.7) 100%)",
+            "radial-gradient(ellipse at 50% 30%, transparent 0%, transparent 50%, rgba(11, 18, 32, 0.75) 100%)",
         }}
       />
 

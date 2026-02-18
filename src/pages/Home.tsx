@@ -75,7 +75,7 @@ export function Home() {
       </section>
 
       <div className="route-transition">
-      <section className="border-t border-neutral-200 py-16 dark:border-neutral-800">
+      <section className="py-16">
         <Container>
           <SectionHeading className="mb-8">About</SectionHeading>
           <div className="max-w-2xl space-y-4 text-neutral-600 dark:text-neutral-400">
@@ -89,7 +89,7 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="border-t border-neutral-200 py-16 dark:border-neutral-800">
+      <section className="py-16">
         <Container>
           <SectionHeading className="mb-8">Skills</SectionHeading>
           <div className="flex flex-col gap-10">
