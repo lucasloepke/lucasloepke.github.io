@@ -3,6 +3,7 @@ import { Container } from "../components/Container";
 import { SectionHeading } from "../components/SectionHeading";
 import { Chip } from "../components/Chip";
 import { ProjectCard } from "../components/ProjectCard";
+import { UnderwaterBackground } from "../components/UnderwaterBackground";
 import { projects } from "../data/projects";
 import { getSkillsByCategory } from "../data/skills";
 
@@ -19,8 +20,10 @@ const categoryOrder = [
 export function Home() {
   return (
     <>
-      <section className="py-16 sm:py-24">
-        <Container>
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        <UnderwaterBackground className="absolute inset-0 z-0" intensity={0.6} speed={0.8} />
+        <div className="relative z-10 route-transition">
+          <Container>
           <div className="max-w-2xl">
             <p className="text-base text-neutral-500 dark:text-neutral-400">
               Hi there,
@@ -50,8 +53,10 @@ export function Home() {
             </div>
           </div>
         </Container>
+        </div>
       </section>
 
+      <div className="route-transition">
       <section className="border-t border-neutral-200 py-16 dark:border-neutral-800">
         <Container>
           <SectionHeading className="mb-8">About</SectionHeading>
@@ -114,6 +119,7 @@ export function Home() {
           </div>
         </Container>
       </section>
+      </div>
     </>
   );
 }

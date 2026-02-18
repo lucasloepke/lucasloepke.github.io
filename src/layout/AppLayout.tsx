@@ -15,7 +15,7 @@ export function AppLayout() {
     <div className="flex min-h-screen flex-col bg-white dark:bg-[#0b1220]">
       <Header />
       <main className="flex-1">
-        <div key={location.pathname} className="h-full route-transition">
+        <div key={location.pathname} className="h-full">
           <Outlet />
         </div>
       </main>

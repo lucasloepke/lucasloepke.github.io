@@ -21,7 +21,7 @@ export function Header() {
   const pathname = location.pathname || "/";
 
   return (
-    <header className="sticky top-0 z-10 border-b border-neutral-200 bg-white/95 backdrop-blur dark:border-neutral-800 dark:bg-[#0b1220]/90">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur dark:border-neutral-800 dark:bg-[#0b1220]/90">
       <div className="mx-auto grid max-w-[960px] grid-cols-3 items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link
           to="/"
