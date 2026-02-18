@@ -1,11 +1,15 @@
+import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Container";
 import { SectionHeading } from "../components/SectionHeading";
 import { Chip } from "../components/Chip";
 import { ProjectCard } from "../components/ProjectCard";
 import { UnderwaterBackground } from "../components/UnderwaterBackground";
+import { InteractiveGridPattern } from "../components/InteractiveGridPattern";
 import { projects } from "../data/projects";
 import { getSkillsByCategory } from "../data/skills";
+
+const OFF_SCREEN = { x: -1000, y: -1000 };
 
 const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
 const skillsByCategory = getSkillsByCategory();
@@ -18,6 +22,20 @@ const categoryOrder = [
 ] as const;
 
 export function Home() {
+  const gridSectionRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(OFF_SCREEN);
+
+  const handleGridMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = gridSectionRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
+
+  const handleGridMouseLeave = useCallback(() => {
+    setMousePosition(OFF_SCREEN);
+  }, []);
+
   return (
     <>
       <section className="relative py-16 sm:py-24 overflow-hidden">
@@ -101,10 +119,16 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="border-t border-neutral-200 py-16 dark:border-neutral-800">
-        <Container>
+      <section
+        ref={gridSectionRef}
+        className="relative py-16 sm:py-24 overflow-hidden"
+        onMouseMove={handleGridMouseMove}
+        onMouseLeave={handleGridMouseLeave}
+      >
+        <InteractiveGridPattern className="absolute inset-0 z-0" mousePosition={mousePosition} />
+        <Container className="relative z-10 text-neutral-100">
           <div className="mb-8 flex items-center justify-between gap-4">
-            <SectionHeading>Featured Projects</SectionHeading>
+            <SectionHeading className="text-neutral-100">Featured Projects</SectionHeading>
             <Link
               to="/projects"
               className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"
