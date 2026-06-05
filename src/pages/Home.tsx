@@ -52,7 +52,7 @@ export function Home() {
                 <p className="mt-4 text-neutral-200/75">
                   Computer Science & Economics @ Pitt{" "}
                   <br />
-                  Building enterprise iOS apps at SAP
+                  Building agentic AI systems and enterprise tooling at SAP
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
@@ -81,13 +81,13 @@ export function Home() {
               <SectionHeading className="mb-8 text-white">About</SectionHeading>
               <div className="max-w-2xl space-y-4 text-neutral-200/75">
                 <p>
-                  I enjoy building reliable, well-structured software systems and care about clean architecture,
-                  performance, and writing code that scales beyond small demos. My work at SAP centers on mobile
-                  development, backend systems, and applied AI.
+                  I enjoy building reliable, well-structured software systems and care about clean architecture, 
+                  performance, and code that scales. My current work at SAP centers on agentic AI platforms and 
+                  deep research tooling for enterprise customers.
                 </p>
                 <p>
-                  Outside of work and school, I build projects in game development and full-stack applications to
-                  strengthen my systems design and engineering skills.
+                  Outside of work and school, I build projects in game development and full-stack applications 
+                  to sharpen my systems thinking and engineering fundamentals.
                 </p>
               </div>
             </Container>
