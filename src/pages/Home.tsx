@@ -52,7 +52,7 @@ export function Home() {
                 <p className="mt-4 text-neutral-200/75">
                   Computer Science & Economics @ Pitt{" "}
                   <br />
-                  Building agentic AI systems and enterprise tooling at SAP
+                  Building agentic AI systems and enterprise tooling @ SAP
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
