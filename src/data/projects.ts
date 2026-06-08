@@ -19,9 +19,9 @@ export const projects: Project[] = [
   {
     slug: "ml-project",
     title: "Applied Machine Learning Project (2026)",
-    description: "Collaborative filtering system for personalized Steam game recommendations using matrix factorization and implicit feedback modeling. Currently building for CS 1675, with focus on sparse user–item data and ranking-based evaluation metrics.",
+    description: "Built a collaborative filtering recommender for Steam games using SGD and ALS matrix factorization on implicit feedback. ALS with k=200 latent factors achieved a 264% hit rate@10 improvement over a popularity baseline at 99.36% sparsity.",
     tech: ["python", "pandas", "numpy", "sql", "git"],
-    links: { github: "" },
+    links: { github: "https://github.com/lucasloepke/steam-game-recommender" },
     featured: true,
     date: "2024-09",
   },
