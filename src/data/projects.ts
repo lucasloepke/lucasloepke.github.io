@@ -39,7 +39,7 @@ export const projects: Project[] = [
     title: "Cleanup Crew (2025)",
     description: "Top-down action shooter game developed in Rust using the Bevy engine, featuring custom ECS architecture, physics, and procedural generation. Built collaboratively over a semester by an 8-person team for CS 1666.",
     tech: ["rust", "bevy", "git"],
-    links: { github: "https://github.com/CS1666-CleanupCrew/Cleanup-crew" },
+    links: { github: "https://github.com/CS1666-CleanupCrew/Cleanup-crew", live: "https://store.steampowered.com/app/4801800/Cleanup_Crew/" },
     featured: true,
     date: "2024-11",
   },
