@@ -43,8 +43,8 @@ export const skills: Skill[] = [
   { key: "pandas", label: "Pandas", category: "Frameworks", simpleIconSlug: "pandas" },
   { key: "numpy", label: "NumPy", category: "Frameworks", simpleIconSlug: "numpy" },
   { key: "bevy", label: "Bevy", category: "Frameworks", simpleIconSlug: "bevy" },
-  { key: "langchain", label: "LangChain", category: "AI, Copilots & SDKs", simpleIconSlug: "langchain" },
-  { key: "langgraph", label: "LangGraph", category: "AI, Copilots & SDKs", simpleIconSlug: "langgraph" },
+  { key: "langchain", label: "LangChain", category: "Frameworks", simpleIconSlug: "langchain" },
+  { key: "langgraph", label: "LangGraph", category: "Frameworks", simpleIconSlug: "langgraph" },
   // Tools (kept for project cards)
   { key: "tailwind", label: "Tailwind CSS", category: "Frameworks", simpleIconSlug: "tailwindcss" },
   { key: "vite", label: "Vite", category: "Tools", simpleIconSlug: "vite" },
