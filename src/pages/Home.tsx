@@ -81,13 +81,10 @@ export function Home() {
               <SectionHeading className="mb-8 text-white">About</SectionHeading>
               <div className="max-w-2xl space-y-4 text-neutral-200/75">
                 <p>
-                  I enjoy building reliable, well-structured software systems and care about clean architecture, 
-                  performance, and code that scales. My current work at SAP centers on agentic AI platforms and 
-                  deep research tooling for enterprise customers.
+                  I started writing code over a decade ago — my first projects were Minecraft mini-game servers that actually turned a profit. Since then I've interned across three rotations at SAP, moving from internal analytics tooling to enterprise iOS development to now building agentic AI platforms for enterprise customers.
                 </p>
                 <p>
-                  Outside of work and school, I build projects in game development and full-stack applications 
-                  to sharpen my systems thinking and engineering fundamentals.
+                  I'm finishing my CS degree at Pitt and looking for new-grad SWE roles in SF or NYC — open to start as early as May 2027. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
                 </p>
               </div>
             </Container>
