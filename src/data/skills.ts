@@ -43,6 +43,8 @@ export const skills: Skill[] = [
   { key: "pandas", label: "Pandas", category: "Frameworks", simpleIconSlug: "pandas" },
   { key: "numpy", label: "NumPy", category: "Frameworks", simpleIconSlug: "numpy" },
   { key: "bevy", label: "Bevy", category: "Frameworks", simpleIconSlug: "bevy" },
+  { key: "langchain", label: "LangChain", category: "AI, Copilots & SDKs", simpleIconSlug: "langchain" },
+  { key: "langgraph", label: "LangGraph", category: "AI, Copilots & SDKs", simpleIconSlug: "langgraph" },
   // Tools (kept for project cards)
   { key: "tailwind", label: "Tailwind CSS", category: "Frameworks", simpleIconSlug: "tailwindcss" },
   { key: "vite", label: "Vite", category: "Tools", simpleIconSlug: "vite" },
@@ -65,8 +67,6 @@ export const skills: Skill[] = [
   { key: "gemini", label: "Gemini", category: "AI, Copilots & SDKs", simpleIconSlug: "googlegemini" },
   { key: "google-genai-sdk", label: "Gen AI SDK", category: "AI, Copilots & SDKs", simpleIconSlug: "googlegemini" },
   { key: "cursor", label: "Cursor", category: "AI, Copilots & SDKs", simpleIconSlug: "cursor" },
-  { key: "langchain", label: "LangChain", category: "AI, Copilots & SDKs", simpleIconSlug: "langchain" },
-  { key: "langgraph", label: "LangGraph", category: "AI, Copilots & SDKs", simpleIconSlug: "langgraph" },
   { 
     key: "claude", 
     label: "Claude", 
