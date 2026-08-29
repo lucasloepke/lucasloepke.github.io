@@ -79,12 +79,26 @@ export function Home() {
           <div className="route-transition">
             <Container>
               <SectionHeading className="mb-8 text-white">About</SectionHeading>
-              <div className="max-w-2xl space-y-4 text-neutral-200/75">
+              <div className="max-w-[40rem] space-y-4 text-neutral-200/75">
                 <p>
-                  I started writing code over a decade ago — my first projects were Minecraft mini-game servers that actually turned a profit. Since then I've interned across three rotations at SAP, moving from internal analytics tooling to enterprise iOS development to now building agentic AI platforms for enterprise customers.
+                  I started writing code{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">over a decade ago</span> — my first projects were Minecraft mini-game servers that actually turned a profit. I've spent the last{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">three years</span>{" "}
+                  interning across three rotations at{" "}
+                  <a
+                    href="https://sap.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-white/40 underline-offset-2 transition-colors hover:decoration-white"
+                  >
+                    SAP
+                  </a>
+                  , moving from internal analytics tooling to full-stack iOS development to now building agentic AI platforms for enterprise customers.
                 </p>
                 <p>
-                  I'm finishing my CS degree at Pitt and looking for new-grad SWE roles in SF or NYC — open to start as early as May 2027. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
+                  I'm finishing my CS degree at Pitt and looking for{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">new-grad SWE roles</span> in SF or NYC — open to start as early as{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">June 2027</span>. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
                 </p>
               </div>
             </Container>
