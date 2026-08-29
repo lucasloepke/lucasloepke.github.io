@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { Container } from "../components/Container";
+import { Seo } from "../components/Seo";
 import { SectionHeading } from "../components/SectionHeading";
 import { ProjectCard } from "../components/ProjectCard";
 import { InteractiveGridPattern } from "../components/InteractiveGridPattern";
@@ -29,10 +30,16 @@ export function Projects() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      <Seo
+        title="Projects | Lucas Loepke"
+        description="Selected software projects by Lucas Loepke — machine learning, full-stack web apps, game development, and award-winning hackathon builds."
+        path="/projects"
+      />
+
       <InteractiveGridPattern className="absolute inset-0 z-0" mousePosition={mousePosition} />
       <div className="relative z-10 route-transition">
       <Container className="text-neutral-100">
-        <SectionHeading className="mb-10 text-white">Projects</SectionHeading>
+        <SectionHeading as="h1" className="mb-10 text-white">Projects</SectionHeading>
         <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

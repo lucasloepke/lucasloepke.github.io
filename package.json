@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "cp dist/index.html dist/404.html",
+    "postbuild": "cp dist/index.html dist/404.html && node scripts/generate-meta.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

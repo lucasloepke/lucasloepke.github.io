@@ -1,25 +1,17 @@
 import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Container";
+import { Seo } from "../components/Seo";
 import { SectionHeading } from "../components/SectionHeading";
-import { Chip } from "../components/Chip";
 import { ProjectCard } from "../components/ProjectCard";
 import { UnderwaterBackground } from "../components/UnderwaterBackground";
 import { InteractiveGridPattern } from "../components/InteractiveGridPattern";
 import { projects } from "../data/projects";
-import { getSkillsByCategory } from "../data/skills";
+import { experience, education } from "../data/experience";
 
 const OFF_SCREEN = { x: -1000, y: -1000 };
 
 const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
-const skillsByCategory = getSkillsByCategory();
-const categoryOrder = [
-  "Languages",
-  "Frameworks",
-  "Tools",
-  "AI, Copilots & SDKs",
-  "Other",
-] as const;
 
 export function Home() {
   const gridSectionRef = useRef<HTMLDivElement>(null);
@@ -38,6 +30,12 @@ export function Home() {
 
   return (
     <>
+      <Seo
+        title="Lucas Loepke | Software Engineer & AI Developer"
+        description="Computer Science & Economics @ Pitt. Building agentic AI systems and enterprise tooling @ SAP. Explore my projects, experience, and resume."
+        path="/"
+      />
+
       <div className="relative overflow-hidden">
         <UnderwaterBackground className="absolute inset-0 z-0" intensity={0.6} speed={0.8} />
 
@@ -112,31 +110,68 @@ export function Home() {
       <section className="py-16">
         <div className="route-transition">
           <Container>
-            <SectionHeading className="mb-8">Skills</SectionHeading>
-            <div className="flex flex-col gap-10">
-              {categoryOrder.map((category) => {
-                const list = skillsByCategory.get(category);
-                if (!list?.length) return null;
-                return (
-                  <div key={category}>
-                    <h3 className="mb-3 text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                      {category}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {list.map((skill) => (
-                        <Chip
-                          key={skill.key}
-                          label={skill.label}
-                          iconSlug={skill.simpleIconSlug}
-                          customIconSvg={skill.customIconSvg}
-                          emoji={skill.emoji}
-                        />
-                      ))}
+            <SectionHeading className="mb-6">Experience</SectionHeading>
+
+            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
+              {experience.map((entry) => (
+                <li
+                  key={entry.id}
+                  className="grid grid-cols-1 gap-x-8 gap-y-1 px-4 py-5 transition-colors duration-150 hover:bg-accent/5 dark:hover:bg-accent/10 sm:grid-cols-[11rem_1fr]"
+                >
+                  <div className="whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400">
+                    {entry.dates}
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      {entry.companyUrl ? (
+                        <a
+                          href={entry.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-neutral-900 transition-colors hover:text-accent dark:text-neutral-100 dark:hover:text-accent"
+                        >
+                          {entry.company}
+                        </a>
+                      ) : (
+                        <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+                          {entry.company}
+                        </span>
+                      )}
+                      <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                        {entry.location}
+                      </span>
+                    </div>
+                    <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                      {entry.role}
+                      <span className="mx-1.5 text-neutral-400 dark:text-neutral-600">·</span>
+                      {entry.detail}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 px-4 text-sm">
+              <span className="text-neutral-400 dark:text-neutral-500">↳ </span>
+              {education.schoolUrl ? (
+                <a
+                  href={education.schoolUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-600 underline decoration-transparent underline-offset-2 transition-colors hover:decoration-amber-600 dark:text-amber-400 dark:hover:decoration-amber-400"
+                >
+                  {education.school}
+                </a>
+              ) : (
+                <span className="text-amber-600 dark:text-amber-400">{education.school}</span>
+              )}
+              <span className="text-neutral-500 dark:text-neutral-400">, </span>
+              <span className="text-neutral-700 dark:text-neutral-200">{education.degree}</span>
+              <span className="text-neutral-500 dark:text-neutral-400">
+                {" · "}
+                {education.date}
+              </span>
+            </p>
           </Container>
         </div>
       </section>

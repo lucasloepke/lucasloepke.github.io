@@ -85,13 +85,3 @@ const skillsByKey = new Map(skills.map((s) => [s.key, s]));
 export function getSkill(key: SkillKey): Skill | undefined {
   return skillsByKey.get(key);
 }
-
-export function getSkillsByCategory(): Map<SkillCategory, Skill[]> {
-  const map = new Map<SkillCategory, Skill[]>();
-  for (const skill of skills) {
-    const list = map.get(skill.category) ?? [];
-    list.push(skill);
-    map.set(skill.category, list);
-  }
-  return map;
-}
