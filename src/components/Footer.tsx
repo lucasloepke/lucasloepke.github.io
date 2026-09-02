@@ -8,7 +8,7 @@ const navLinks = [
 const iconLinks = [
   { href: "https://github.com/lucasloepke", label: "GitHub" },
   { href: "https://www.linkedin.com/in/lucasloepke/", label: "LinkedIn" },
-  { href: "/resume.pdf", label: "Resume" },
+  { href: "/Loepke_Resume.pdf", label: "Resume" },
 ];
 
 export function Footer() {
@@ -28,18 +28,21 @@ export function Footer() {
             ))}
           </nav>
           <div className="flex gap-6">
-            {iconLinks.map(({ href, label }) => (
+            {iconLinks.map(({ href, label }) => {
+              const openInNewTab = href.startsWith("http") || href.endsWith(".pdf");
+              return (
               <a
                 key={label}
                 href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                target={openInNewTab ? "_blank" : undefined}
+                rel={openInNewTab ? "noopener noreferrer" : undefined}
                 className="text-sm text-neutral-600 transition-colors duration-150 hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:text-neutral-300 dark:hover:text-accent dark:focus:ring-offset-[#0a1020]"
                 aria-label={label}
               >
                 {label}
               </a>
-            ))}
+              );
+            })}
           </div>
         </div>
         <p className="mt-6 text-center text-sm text-neutral-500 dark:text-neutral-400">

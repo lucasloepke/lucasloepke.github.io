@@ -13,7 +13,7 @@ const iconLinks = [
     label: "LinkedIn",
     icon: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
   },
-  { href: "/resume.pdf", label: "Resume", icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2 5 5h-5V4zM8 17v-2h8v2H8zm0-4v-2h8v2H8zm0-4v-.02h8V9H8z" },
+  { href: "/Loepke_Resume.pdf", label: "Resume", icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2 5 5h-5V4zM8 17v-2h8v2H8zm0-4v-2h8v2H8zm0-4v-.02h8V9H8z" },
 ];
 
 export function Header() {
@@ -58,6 +58,7 @@ export function Header() {
           {iconLinks.map((link) => {
             const href = link.href;
             const isExternal = href.startsWith("http");
+            const openInNewTab = isExternal || href.endsWith(".pdf");
             const simpleIcon =
               "simpleIconSlug" in link && link.simpleIconSlug
                 ? getSimpleIcon(link.simpleIconSlug)
@@ -67,8 +68,8 @@ export function Header() {
               <a
                 key={link.label}
                 href={href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
+                target={openInNewTab ? "_blank" : undefined}
+                rel={openInNewTab ? "noopener noreferrer" : undefined}
                 className="flex items-center justify-center text-neutral-500 transition-colors duration-150 hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-accent dark:focus:ring-offset-[#0b1220]"
                 aria-label={link.label}
               >

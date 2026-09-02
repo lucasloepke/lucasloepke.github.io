@@ -60,7 +60,7 @@ export function Home() {
                     View Projects
                   </Link>
                   <a
-                    href="/resume.pdf"
+                    href="/Loepke_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-medium text-neutral-50 transition-colors duration-150 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-neutral-950"
