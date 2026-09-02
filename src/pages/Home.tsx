@@ -31,8 +31,8 @@ export function Home() {
   return (
     <>
       <Seo
-        title="Lucas Loepke | Software Engineer & AI Developer"
-        description="Computer Science & Economics @ Pitt. Building agentic AI systems and enterprise tooling @ SAP. Explore my projects, experience, and resume."
+        title="Lucas Loepke - Software Engineer | Portfolio & Resume"
+        description="Lucas Loepke - Software Engineer at SAP and Computer Science student at University of Pittsburgh."
         path="/"
       />
 
