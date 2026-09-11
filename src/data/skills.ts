@@ -57,6 +57,10 @@ export const skills: Skill[] = [
   { key: "hanacloud", label: "HANA Cloud", category: "Tools", simpleIconSlug: "sap" },
   { key: "cloudflare", label: "Cloudflare", category: "Tools", simpleIconSlug: "cloudflare" },
   { key: "cloudflarepages", label: "Cloudflare Pages", category: "Tools", simpleIconSlug: "cloudflarepages" },
+  { key: "chrome-extension", label: "Chrome Extension", category: "Tools", simpleIconSlug: "googlechrome" },
+  { key: "manifest-v3", label: "Manifest V3", category: "Tools", simpleIconSlug: "json" },
+  { key: "rest-api", label: "REST API", category: "Tools", customIconSvg: `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>REST API</title><path d="M8.3 3.5c-1.6 0-2.6 1-2.6 2.7v2.2c0 1-.5 1.5-1.5 1.5H3v2.2h1.2c1 0 1.5.5 1.5 1.5v2.2c0 1.7 1 2.7 2.6 2.7h1.2v-2.2h-.8c-.6 0-.9-.3-.9-1v-2c0-1-.4-1.7-1.2-2 .8-.4 1.2-1 1.2-2v-2c0-.7.3-1 .9-1h.8V3.5H8.3zm7.4 0v2.2h.8c.6 0 .9.3.9 1v2c0 1 .4 1.6 1.2 2-.8.3-1.2 1-1.2 2v2c0 .7-.3 1-.9 1h-.8v2.2h1.2c1.6 0 2.6-1 2.6-2.7v-2.2c0-1 .5-1.5 1.5-1.5H21v-2.2h-1.2c-1 0-1.5-.5-1.5-1.5V6.2c0-1.7-1-2.7-2.6-2.7h-1.2z"/></svg>` },
+  { key: "htmlcss", label: "HTML/CSS", category: "Languages", simpleIconSlug: "html5" },
   // AI Models and Tools
   { 
     key: "openai", 

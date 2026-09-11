@@ -17,8 +17,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "simple-canvas-tasks",
+    title: "Simple Canvas Tasks (2026)",
+    description: "A lightweight, privacy-first Chrome extension (Manifest V3) that replaces the Canvas LMS \"To Do\" sidebar with a tabbed Tasks / Posts / Calendar view and live due-date countdowns, powered by Canvas' authenticated REST API.",
+    tech: ["javascript", "chrome-extension", "manifest-v3"],
+    links: { github: "https://github.com/lucasloepke/canvas-tasks" },
+    featured: true,
+    date: "2026-01",
+  },
+  {
     slug: "ml-project",
-    title: "Applied Machine Learning Project (2026)",
+    title: "Steam Game Recommender (2026)",
     description: "A collaborative filtering recommender for Steam games using SGD and ALS matrix factorization on implicit feedback. ALS with k=200 latent factors achieved a 264% hit rate@10 improvement over a popularity baseline at 99.36% sparsity.",
     tech: ["python", "pandas", "numpy", "sql", "git"],
     links: { github: "https://github.com/lucasloepke/steam-game-recommender" },
@@ -37,7 +46,7 @@ export const projects: Project[] = [
   {
     slug: "cleanup-crew",
     title: "Cleanup Crew (2025)",
-    description: "Top-down action shooter game developed in Rust using the Bevy engine, featuring custom ECS architecture, physics, and procedural generation. Built collaboratively over a semester by an 8-person team for CS 1666.",
+    description: "Top-down action shooter game developed in Rust using the Bevy engine, featuring custom ECS architecture, physics, and procedural generation. Built collaboratively over a semester by an 8-person team for CS 1666. The playable demo has 2,000+ downloads on Steam.",
     tech: ["rust", "bevy", "git"],
     links: { github: "https://github.com/CS1666-CleanupCrew/Cleanup-crew", live: "https://store.steampowered.com/app/4801800/Cleanup_Crew/" },
     featured: true,

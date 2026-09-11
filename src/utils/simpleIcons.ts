@@ -38,6 +38,8 @@ import {
   siCloudflarepages,
   siGooglegemini,
   siCursor,
+  siGooglechrome,
+  siJson,
 } from "simple-icons";
 
 export interface SimpleIconResult {
@@ -89,6 +91,8 @@ const iconsBySlug: Record<string, SimpleIcon> = {
   cloudflarepages: siCloudflarepages,
   googlegemini: siGooglegemini,
   cursor: siCursor,
+  googlechrome: siGooglechrome,
+  json: siJson,
 };
 
 /**
