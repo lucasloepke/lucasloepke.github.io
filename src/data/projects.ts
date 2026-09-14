@@ -21,7 +21,7 @@ export const projects: Project[] = [
     title: "Simple Canvas Tasks (2026)",
     description: "A lightweight, privacy-first Chrome extension (Manifest V3) that replaces the Canvas LMS \"To Do\" sidebar with a tabbed Tasks / Posts / Calendar view and live due-date countdowns, powered by Canvas' authenticated REST API.",
     tech: ["javascript", "chrome-extension", "manifest-v3"],
-    links: { github: "https://github.com/lucasloepke/canvas-tasks" },
+    links: { github: "https://github.com/lucasloepke/canvas-tasks", live: "https://chromewebstore.google.com/detail/dejmhgkaogjhiannogiggcffkhodeoek" },
     featured: true,
     date: "2026-01",
   },
