@@ -17,6 +17,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "leetvision",
+    title: "LeetVision (2026)",
+    description: "A Chrome side-panel extension (Manifest V3) that traces your NeetCode/LeetCode Python solution line-by-line with a bundled Pyodide runtime, rendering a play/pause/scrub step-through animation client-side. Built for SteelHacks 2026.",
+    tech: ["typescript", "react", "framer-motion", "python", "pyodide", "chrome-extension"],
+    links: { github: "https://github.com/lucasloepke/leetvision", live: "https://chromewebstore.google.com/detail/leetvision/oncedhloihenbjclhebncagkkigdielf" },
+    featured: true,
+    date: "2026-03",
+  },
+  {
     slug: "simple-canvas-tasks",
     title: "Simple Canvas Tasks (2026)",
     description: "A lightweight, privacy-first Chrome extension (Manifest V3) that replaces the Canvas LMS \"To Do\" sidebar with a tabbed Tasks / Posts / Calendar view and live due-date countdowns, powered by Canvas' authenticated REST API.",
@@ -33,6 +42,15 @@ export const projects: Project[] = [
     links: { github: "https://github.com/lucasloepke/steam-game-recommender" },
     featured: true,
     date: "2024-09",
+  },
+  {
+    slug: "gtb-solver",
+    title: "GTB Solver (2026)",
+    description: "A real-time Minecraft Fabric mod (Java) that solves Hypixel's Guess the Build by parsing action-bar hint text and injecting clickable chat guesses from a matched word bank. Distributed via GitHub Releases, with community word-bank contributions through GitHub Issues.",
+    tech: ["java", "javascript", "gradle", "git"],
+    links: { github: "https://github.com/lucasloepke/gtbsolver" },
+    featured: false,
+    date: "2026-02",
   },
   {
     slug: "portfolio-site",

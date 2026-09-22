@@ -40,6 +40,9 @@ import {
   siCursor,
   siGooglechrome,
   siJson,
+  siGradle,
+  siFramer,
+  siWebassembly,
 } from "simple-icons";
 
 export interface SimpleIconResult {
@@ -93,6 +96,9 @@ const iconsBySlug: Record<string, SimpleIcon> = {
   cursor: siCursor,
   googlechrome: siGooglechrome,
   json: siJson,
+  gradle: siGradle,
+  framer: siFramer,
+  webassembly: siWebassembly,
 };
 
 /**
