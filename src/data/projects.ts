@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     slug: "simple-canvas-tasks",
     title: "Simple Canvas Tasks (2026)",
-    description: "A lightweight, privacy-first Chrome extension (Manifest V3) that replaces the Canvas LMS \"To Do\" sidebar with a tabbed Tasks / Posts / Calendar view and live due-date countdowns, powered by Canvas' authenticated REST API.",
+    description: "Privacy-first Chrome extension that replaces Canvas's sidebar with a tabbed to-do widget and live due-date countdowns. Live on the Chrome Web Store with 50+ weekly active users; iterated based on user feedback.",
     tech: ["javascript", "chrome-extension", "manifest-v3"],
     links: { github: "https://github.com/lucasloepke/canvas-tasks", live: "https://chromewebstore.google.com/detail/dejmhgkaogjhiannogiggcffkhodeoek" },
     featured: true,
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     slug: "ml-project",
     title: "Steam Game Recommender (2026)",
-    description: "A collaborative filtering recommender for Steam games using SGD and ALS matrix factorization on implicit feedback. ALS with k=200 latent factors achieved a 264% hit rate@10 improvement over a popularity baseline at 99.36% sparsity.",
+    description: "Collaborative-filtering recommendation engine using SGD and ALS matrix factorization on implicit feedback (Python, Pandas, NumPy). ALS with k=200 latent factors achieved a 264% lift in hit rate@10 over a popularity baseline at 99.36% sparsity.",
     tech: ["python", "pandas", "numpy", "sql", "git"],
     links: { github: "https://github.com/lucasloepke/steam-game-recommender" },
     featured: true,
@@ -64,7 +64,7 @@ export const projects: Project[] = [
   {
     slug: "cleanup-crew",
     title: "Cleanup Crew (2025)",
-    description: "Top-down action shooter game developed in Rust using the Bevy engine, featuring custom ECS architecture, physics, and procedural generation. Built collaboratively over a semester by an 8-person team for CS 1666. The playable demo has 2,000+ downloads on Steam.",
+    description: "Top-down action game in Rust/Bevy, featuring custom ECS architecture, physics, and procedural generation. Built with an 8-person team in weekly sprints for CS 1666. Published on Steam with 1,500+ demo downloads.",
     tech: ["rust", "bevy", "git"],
     links: { github: "https://github.com/CS1666-CleanupCrew/Cleanup-crew", live: "https://store.steampowered.com/app/4801800/Cleanup_Crew/" },
     featured: true,
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   {
     slug: "trust-circle",
     title: "Trust Circle (2025)",
-    description: "Group savings platform where friends contribute toward shared financial goals. Winning project at SAP STAR Hacks 2025.",
+    description: "Group savings platform where friends contribute toward shared financial goals. Built with React, Flask, SAP HANA Cloud, and SAP AI Core with OpenAI models. Winning project at SAP STAR Hacks 2025.",
     tech: ["react", "flask", "hanacloud", "openai"],
     links: { github: "https://github.com/lucasloepke/Trust-Circle" },
     featured: true,
