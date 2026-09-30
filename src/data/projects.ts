@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     slug: "simple-canvas-tasks",
     title: "Simple Canvas Tasks (2026)",
-    description: "Privacy-first Chrome extension that replaces Canvas's sidebar with a tabbed to-do widget and live due-date countdowns. Live on the Chrome Web Store with 50+ weekly active users; iterated based on user feedback.",
+    description: "Privacy-first Chrome extension that replaces Canvas's sidebar with a tabbed to-do widget and live due-date countdowns. Live on the Chrome Web Store with 100+ weekly active users; iterated based on user feedback.",
     tech: ["javascript", "chrome-extension", "manifest-v3"],
     links: { github: "https://github.com/lucasloepke/canvas-tasks", live: "https://chromewebstore.google.com/detail/dejmhgkaogjhiannogiggcffkhodeoek" },
     featured: true,
