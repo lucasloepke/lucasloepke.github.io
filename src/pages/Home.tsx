@@ -39,9 +39,9 @@ export function Home() {
       <div className="relative overflow-hidden">
         <UnderwaterBackground className="absolute inset-0 z-0" intensity={0.6} speed={0.8} />
 
-        <section className="relative z-10 py-16 sm:py-24 overflow-hidden">
+        <section className="relative z-10 py-16 sm:py-24">
           <div className="route-transition">
-            <Container>
+            <Container className="relative">
               <div className="max-w-2xl">
                 <p className="text-base text-neutral-200/70"></p>
                 <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">
@@ -69,6 +69,18 @@ export function Home() {
                   </a>
                 </div>
               </div>
+              <picture className="pointer-events-none absolute -top-16 right-28 z-10 hidden w-56 sm:block lg:-top-12 lg:w-64">
+                <source srcSet="/portrait.webp" type="image/webp" />
+                <img
+                  src="/portrait.jpg"
+                  alt="Lucas Loepke on a Yamaha R7"
+                  width={900}
+                  height={1350}
+                  className="aspect-[2/3] w-full rounded-2xl object-cover shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
             </Container>
           </div>
         </section>
