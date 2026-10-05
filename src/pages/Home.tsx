@@ -69,16 +69,17 @@ export function Home() {
                   </a>
                 </div>
               </div>
-              <picture className="pointer-events-none absolute -top-16 right-28 z-10 hidden w-56 sm:block lg:-top-12 lg:w-64">
+              <picture className="relative z-10 mx-auto mt-8 block w-44 md:absolute md:top-0 md:right-8 md:mt-0 md:w-[clamp(13rem,22vw,16rem)] md:-translate-x-20 md:-translate-y-12">
                 <source srcSet="/portrait.webp" type="image/webp" />
                 <img
                   src="/portrait.jpg"
-                  alt="Lucas Loepke on a Yamaha R7"
+                  alt="Lucas Loepke on a Yamaha R7 motorcycle"
                   width={900}
                   height={1350}
                   className="aspect-[2/3] w-full rounded-2xl object-cover shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10"
                   loading="eager"
                   decoding="async"
+                  fetchPriority="high"
                 />
               </picture>
             </Container>

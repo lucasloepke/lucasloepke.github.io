@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://lucasloepke.github.io/</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lucasloepke.github.io/portrait.jpg</image:loc>
+      <image:title>Lucas Loepke on a Yamaha R7 motorcycle</image:title>
+      <image:caption>Portrait of Lucas Loepke wearing a motorcycle helmet on a Yamaha R7</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lucasloepke.github.io/og-image.png</image:loc>
+      <image:title>Lucas Loepke — Software Engineer</image:title>
+      <image:caption>Lucas Loepke — Software Engineer | Computer Science &amp; Economics @ Pitt | Experience Generation @ SAP</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://lucasloepke.github.io/projects</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://lucasloepke.github.io/projects/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>
