@@ -93,7 +93,7 @@ export function Home() {
               <div className="max-w-[40rem] space-y-4 text-neutral-200/75">
                 <p>
                   I started writing code{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">over a decade ago</span> — my first projects were Minecraft mini-game servers that actually turned a profit. I've spent the last{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">over a decade ago</span>, building Minecraft mini-game servers that actually turned a profit. I've spent the last{" "}
                   <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">three years</span>{" "}
                   interning across three rotations at{" "}
                   <a
@@ -108,7 +108,7 @@ export function Home() {
                 </p>
                 <p>
                   I'm finishing my CS degree at Pitt and looking for{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">new-grad SWE roles</span> in SF or NYC — open to start as early as{" "}
+                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">new-grad SWE roles</span>, open to start as early as{" "}
                   <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">June 2027</span>. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
                 </p>
               </div>
