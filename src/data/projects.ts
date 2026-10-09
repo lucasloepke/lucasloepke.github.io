@@ -67,7 +67,7 @@ export const projects: Project[] = [
     description: "Top-down action game in Rust/Bevy, featuring custom ECS architecture, physics, and procedural generation. Built with an 8-person team in weekly sprints for CS 1666. Published on Steam with 1,500+ demo downloads.",
     tech: ["rust", "bevy", "git"],
     links: { github: "https://github.com/CS1666-CleanupCrew/Cleanup-crew", live: "https://store.steampowered.com/app/4801800/Cleanup_Crew/" },
-    featured: true,
+    featured: false,
     date: "2024-11",
   },
   {
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     description: "Group savings platform where friends contribute toward shared financial goals. Built with React, Flask, SAP HANA Cloud, and SAP AI Core with OpenAI models. Winning project at SAP STAR Hacks 2025.",
     tech: ["react", "flask", "hanacloud", "openai"],
     links: { github: "https://github.com/lucasloepke/Trust-Circle" },
-    featured: true,
+    featured: false,
     date: "2024-12",
   },
   {

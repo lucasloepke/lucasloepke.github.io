@@ -12,7 +12,10 @@ import { getSimpleIcon } from "../utils/simpleIcons";
 
 const OFF_SCREEN = { x: -1000, y: -1000 };
 
-const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
+const featuredOrder = ["simple-canvas-tasks", "ml-project", "leetvision"] as const;
+const featuredProjects = featuredOrder
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is (typeof projects)[number] => Boolean(p));
 
 export function Home() {
   const gridSectionRef = useRef<HTMLDivElement>(null);
@@ -44,7 +47,6 @@ export function Home() {
           <div className="route-transition">
             <Container className="relative">
               <div className="max-w-2xl">
-                <p className="text-base text-neutral-200/70"></p>
                 <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">
                   Lucas Loepke
                 </h1>
