@@ -72,7 +72,7 @@ export function Home() {
                   </a>
                 </div>
               </div>
-              <picture className="relative z-10 mx-auto mt-8 block w-44 md:absolute md:top-0 md:right-8 md:mt-0 md:w-[clamp(13rem,22vw,16rem)] md:-translate-x-20 md:-translate-y-12">
+              <picture className="absolute top-0 right-8 z-10 hidden w-[clamp(13rem,22vw,16rem)] -translate-x-20 -translate-y-12 md:block">
                 <source srcSet="/portrait.webp" type="image/webp" />
                 <img
                   src="/portrait.jpg"
@@ -161,8 +161,9 @@ export function Home() {
                   key={entry.id}
                   className="grid grid-cols-1 gap-x-8 gap-y-1 px-4 py-5 transition-colors duration-150 hover:bg-accent/5 dark:hover:bg-accent/10 sm:grid-cols-[11rem_1fr]"
                 >
-                  <div className="whitespace-nowrap text-sm text-neutral-500 dark:text-neutral-400">
-                    {entry.dates}
+                  <div className="flex items-baseline justify-between gap-x-3 text-sm text-neutral-500 dark:text-neutral-400 sm:block">
+                    <span className="whitespace-nowrap">{entry.dates}</span>
+                    <span className="whitespace-nowrap sm:hidden">{entry.location}</span>
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
@@ -182,7 +183,7 @@ export function Home() {
                           {entry.company}
                         </span>
                       )}
-                      <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                      <span className="hidden text-sm text-neutral-500 dark:text-neutral-400 sm:inline">
                         {entry.location}
                       </span>
                     </div>
