@@ -8,6 +8,7 @@ import { UnderwaterBackground } from "../components/UnderwaterBackground";
 import { InteractiveGridPattern } from "../components/InteractiveGridPattern";
 import { projects } from "../data/projects";
 import { experience, education } from "../data/experience";
+import { getSimpleIcon } from "../utils/simpleIcons";
 
 const OFF_SCREEN = { x: -1000, y: -1000 };
 
@@ -126,7 +127,34 @@ export function Home() {
             <SectionHeading className="mb-6">Experience</SectionHeading>
 
             <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
-              {experience.map((entry) => (
+              {experience.map((entry) => {
+                const companyIcon = !entry.logoSrc && entry.simpleIconSlug
+                  ? getSimpleIcon(entry.simpleIconSlug)
+                  : null;
+                const companyClassName = [
+                  "inline-flex items-center gap-1.5 font-semibold transition-colors",
+                  entry.companyClassName ??
+                    "text-neutral-900 hover:text-accent dark:text-neutral-100 dark:hover:text-accent",
+                ].join(" ");
+                const companyIconEl = entry.logoSrc ? (
+                  <img
+                    src={entry.logoSrc}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 shrink-0 object-contain"
+                    aria-hidden
+                  />
+                ) : companyIcon ? (
+                  <span
+                    className="flex h-4 w-4 shrink-0 items-center justify-center [&>svg]:h-4 [&>svg]:w-4 [&>svg_path]:fill-current"
+                    style={companyIcon.hex ? { color: `#${companyIcon.hex}` } : undefined}
+                    dangerouslySetInnerHTML={{ __html: companyIcon.svg }}
+                    aria-hidden
+                  />
+                ) : null;
+
+                return (
                 <li
                   key={entry.id}
                   className="grid grid-cols-1 gap-x-8 gap-y-1 px-4 py-5 transition-colors duration-150 hover:bg-accent/5 dark:hover:bg-accent/10 sm:grid-cols-[11rem_1fr]"
@@ -135,18 +163,20 @@ export function Home() {
                     {entry.dates}
                   </div>
                   <div>
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
                       {entry.companyUrl ? (
                         <a
                           href={entry.companyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-semibold text-neutral-900 transition-colors hover:text-accent dark:text-neutral-100 dark:hover:text-accent"
+                          className={companyClassName}
                         >
+                          {companyIconEl}
                           {entry.company}
                         </a>
                       ) : (
-                        <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+                        <span className={companyClassName}>
+                          {companyIconEl}
                           {entry.company}
                         </span>
                       )}
@@ -161,7 +191,8 @@ export function Home() {
                     </div>
                   </div>
                 </li>
-              ))}
+                );
+              })}
             </ul>
 
             <p className="mt-6 px-4 text-sm">
