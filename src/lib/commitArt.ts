@@ -178,35 +178,6 @@ export function randomFill(range: CalendarRange): Level[] {
   return next;
 }
 
-/* --------------------------------------------------------------- image */
-
-/** Downscale an image to the grid (contain-fit, centered); dark pixels become dark green. */
-export function imageToCells(img: HTMLImageElement, range: CalendarRange): Level[] {
-  const cols = range.cols;
-  const canvas = document.createElement("canvas");
-  canvas.width = cols;
-  canvas.height = ROWS;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return emptyCells();
-  const scale = Math.min(cols / img.naturalWidth, ROWS / img.naturalHeight);
-  const w = img.naturalWidth * scale;
-  const h = img.naturalHeight * scale;
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = "high";
-  ctx.drawImage(img, (cols - w) / 2, (ROWS - h) / 2, w, h);
-  const { data } = ctx.getImageData(0, 0, cols, ROWS);
-  const next = emptyCells();
-  for (let row = 0; row < ROWS; row++) {
-    for (let col = 0; col < cols; col++) {
-      const p = (row * cols + col) * 4;
-      const lum = (0.2126 * data[p] + 0.7152 * data[p + 1] + 0.0722 * data[p + 2]) / 255;
-      const ink = (1 - lum) * (data[p + 3] / 255);
-      next[idx(col, row)] = (ink < 0.12 ? 0 : Math.min(4, Math.ceil(ink * 4))) as Level;
-    }
-  }
-  return next;
-}
-
 /* --------------------------------------------------------- share links */
 
 // Run-length encoding: level letter (a-e = 0-4) followed by run length.

@@ -12,7 +12,6 @@ import {
   formatDate,
   getRange,
   idx,
-  imageToCells,
   isValidCell,
   maxTextChars,
   randomFill,
@@ -55,7 +54,6 @@ export function CommitArt() {
   const [toast, setToast] = useState<string | null>(null);
   const history = useRef<Level[][]>([]);
   const stroke = useRef<{ value: Level } | null>(null);
-  const fileInput = useRef<HTMLInputElement>(null);
 
   const range = useMemo(() => getRange(rangeId), [rangeId]);
 
@@ -139,20 +137,6 @@ export function CommitArt() {
 
   /* -------------------------------------------------------------- tools */
 
-  const onImage = (file: File) => {
-    const url = URL.createObjectURL(file);
-    const img = new Image();
-    img.onload = () => {
-      commit(imageToCells(img, range));
-      URL.revokeObjectURL(url);
-    };
-    img.onerror = () => {
-      setToast("Couldn't read that image");
-      URL.revokeObjectURL(url);
-    };
-    img.src = url;
-  };
-
   const invert = () =>
     commit(cells.map((v, i) => (Math.floor(i / ROWS) < range.cols ? ((4 - v) as Level) : v)));
 
@@ -233,7 +217,7 @@ export function CommitArt() {
 
         <ol className="mt-8 grid gap-3 sm:grid-cols-3">
           {[
-            ["Draw", "Click and drag on the grid. Click a square again to erase it. You can also stamp text or import an image."],
+            ["Draw", "Click and drag on the grid. Click a square again to erase it. You can also stamp text."],
             ["Download", "Pick the year it should appear in, then download the script."],
             ["Run", "Open a terminal (Git Bash on Windows) in any folder and run it. It builds the repo and walks you through pushing."],
           ].map(([title, body], i) => (
@@ -370,18 +354,6 @@ export function CommitArt() {
               />
               <ToolButton type="submit">Stamp text</ToolButton>
             </form>
-            <ToolButton onClick={() => fileInput.current?.click()}>Import image</ToolButton>
-            <input
-              ref={fileInput}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => {
-                const f = e.target.files?.[0];
-                if (f) onImage(f);
-                e.target.value = "";
-              }}
-            />
             <ToolButton onClick={() => commit(randomFill(range))}>Random</ToolButton>
             <ToolButton onClick={invert}>Invert</ToolButton>
             <ToolButton onClick={undo}>Undo</ToolButton>
