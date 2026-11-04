@@ -88,6 +88,24 @@
   transform: none;
 }
 
+.scroll-hint {
+  transition: opacity 0.8s ease;
+}
+
+.scroll-hint-chevron {
+  animation: scroll-hint-bob 2s ease-in-out infinite;
+}
+
+@keyframes scroll-hint-bob {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
 /* Squares of the Commit Art preview paint in once their Reveal comes into view. */
 .paint-square {
   opacity: 0;
@@ -119,7 +137,8 @@
     transition: none;
   }
   .route-transition,
-  .underwater-motion {
+  .underwater-motion,
+  .scroll-hint-chevron {
     animation: none !important;
   }
   .glass-button:active,

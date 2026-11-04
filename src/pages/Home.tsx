@@ -6,6 +6,7 @@ import { SectionHeading } from "../components/SectionHeading";
 import { Reveal } from "../components/Reveal";
 import { ProjectFeature } from "../components/ProjectFeature";
 import { HoverGrid } from "../components/HoverGrid";
+import { ScrollHint } from "../components/ScrollHint";
 import { projects } from "../data/projects";
 import { experience, education } from "../data/experience";
 
@@ -103,7 +104,9 @@ export function Home() {
         </Container>
       </section>
 
-      <section className="relative py-16 md:-mt-24">
+      <ScrollHint targetId="about" />
+
+      <section id="about" className="relative scroll-mt-20 py-16 md:-mt-24">
         <Container>
           <Reveal>
             <SectionHeading className="mb-8">About</SectionHeading>
