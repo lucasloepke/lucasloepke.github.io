@@ -3,14 +3,14 @@ export interface ExperienceEntry {
   dates: string;
   company: string;
   companyUrl?: string;
-  /** Optional Simple Icons slug shown beside the company name. */
-  simpleIconSlug?: string;
-  /** Optional custom logo image path (preferred over simpleIconSlug when set). */
+  /** Optional custom logo image path. */
   logoSrc?: string;
-  /** Optional Tailwind text color classes for the company name. */
-  companyClassName?: string;
+  /** What the work was, in plain words. */
+  title: string;
   role: string;
   detail: string;
+  /** What the rotation produced, from the resume. */
+  outcome: string;
   location: string;
 }
 
@@ -21,9 +21,10 @@ export const experience: ExperienceEntry[] = [
     company: "SAP",
     companyUrl: "https://sap.com",
     logoSrc: "/sap-logo.png",
-    companyClassName: "text-neutral-900 hover:text-neutral-700 dark:text-white dark:hover:text-white/80",
+    title: "Agentic AI platform",
     role: "Software Engineer Intern",
     detail: "Experience Generation",
+    outcome: "Building core AI tooling for SAP's Forward Deployed Engineering work with enterprise customers, including a collaborative workspace with permission-aware agents. Also built a Claude Code review skill used by 20+ engineers.",
     location: "Palo Alto, CA",
   },
   {
@@ -32,9 +33,10 @@ export const experience: ExperienceEntry[] = [
     company: "SAP",
     companyUrl: "https://sap.com",
     logoSrc: "/sap-logo.png",
-    companyClassName: "text-neutral-900 hover:text-neutral-700 dark:text-white dark:hover:text-white/80",
+    title: "Native iOS",
     role: "Software Engineer Intern",
     detail: "Experience Engineering",
+    outcome: "Shipped features across 15+ enterprise iOS apps for SAP's 112,000 employees, in Swift and SAP Fiori.",
     location: "San Ramon, CA",
   },
   {
@@ -43,9 +45,10 @@ export const experience: ExperienceEntry[] = [
     company: "SAP",
     companyUrl: "https://sap.com",
     logoSrc: "/sap-logo.png",
-    companyClassName: "text-neutral-900 hover:text-neutral-700 dark:text-white dark:hover:text-white/80",
+    title: "Internal analytics tooling",
     role: "Software Engineer Intern",
     detail: "CoE Analytics",
+    outcome: "Built a full-stack internal tool on SAP BTP that cut case turnaround from about an hour to minutes for 100+ support engineers. The team still maintains it.",
     location: "Newtown Square, PA",
   },
 ];
@@ -54,5 +57,5 @@ export const education = {
   school: "University of Pittsburgh",
   schoolUrl: "https://pitt.edu",
   degree: "BS: Computer Science & Economics",
-  date: "Expected April 2027",
+  date: "Expected May 2027",
 };

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 /* Tailwind directives – processed by PostCSS; ignore "unknown at rule" in editor */
 @tailwind base;
 @tailwind components;
@@ -8,6 +6,12 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    color-scheme: dark;
+    scrollbar-color: #2a3650 #0b1220;
+  }
+  ::selection {
+    background: #2563eb;
+    color: #fff;
   }
   body {
     @apply min-h-screen bg-white text-neutral-800 antialiased dark:bg-[#0b1220] dark:text-neutral-200;
@@ -32,6 +36,99 @@
 @layer utilities {
   .route-transition {
     animation: route-fade 0.4s ease-out;
+  }
+}
+
+.glass-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.07));
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease;
+}
+
+.glass-button:active {
+  transform: scale(0.98);
+}
+
+.glass-button-primary {
+  background: linear-gradient(180deg, rgba(47, 110, 255, 0.92), rgba(29, 78, 225, 0.82));
+}
+
+.glass-button > span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.glass-button:hover > span {
+  transform: scale(1.06);
+}
+
+.glass-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.glass-button:disabled > span {
+  transform: none;
+}
+
+/* Squares of the Commit Art preview paint in once their Reveal comes into view. */
+.paint-square {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.reveal-in .paint-square {
+  opacity: 1;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .route-transition,
+  .underwater-motion {
+    animation: none !important;
+  }
+  .glass-button:active,
+  .glass-button:hover > span {
+    transform: none;
+  }
+  .paint-square {
+    opacity: 1;
+    transition: none;
   }
 }
 

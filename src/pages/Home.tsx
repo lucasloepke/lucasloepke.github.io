@@ -1,35 +1,44 @@
-import { useCallback, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Container";
 import { Seo } from "../components/Seo";
 import { SectionHeading } from "../components/SectionHeading";
-import { ProjectCard } from "../components/ProjectCard";
-import { UnderwaterBackground } from "../components/UnderwaterBackground";
-import { InteractiveGridPattern } from "../components/InteractiveGridPattern";
+import { Reveal } from "../components/Reveal";
+import { ProjectFeature } from "../components/ProjectFeature";
+import { HoverGrid } from "../components/HoverGrid";
 import { projects } from "../data/projects";
 import { experience, education } from "../data/experience";
-import { getSimpleIcon } from "../utils/simpleIcons";
 
-const OFF_SCREEN = { x: -1000, y: -1000 };
-
-const featuredOrder = ["simple-canvas-tasks", "ml-project", "leetvision"] as const;
-const featuredProjects = featuredOrder
-  .map((slug) => projects.find((p) => p.slug === slug))
-  .filter((p): p is (typeof projects)[number] => Boolean(p));
+const EMAIL = "lucasloepke@gmail.com";
+const featuredSlugs = ["simple-canvas-tasks", "cleanup-crew", "commit-art"];
 
 export function Home() {
-  const gridSectionRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(OFF_SCREEN);
+  const photoRef = useRef<HTMLImageElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
 
-  const handleGridMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const el = gridSectionRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  }, []);
-
-  const handleGridMouseLeave = useCallback(() => {
-    setMousePosition(OFF_SCREEN);
+  // The hero drifts apart and fades as it scrolls away.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = Math.min(window.scrollY, 800);
+      if (photoRef.current) {
+        photoRef.current.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
+        photoRef.current.style.opacity = String(Math.max(1 - y / 640, 0));
+      }
+      if (introRef.current) {
+        introRef.current.style.transform = `translate3d(0, ${y * 0.06}px, 0)`;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -40,214 +49,193 @@ export function Home() {
         path="/"
       />
 
-      <div className="relative overflow-hidden">
-        <UnderwaterBackground className="absolute inset-0 z-0" intensity={0.6} speed={0.8} />
+      <section className="relative overflow-hidden">
+        {/* The fade lives on the picture so it stays put while the photo drifts inside it. */}
+        <picture className="relative block h-80 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:absolute md:inset-y-0 md:left-[calc(50%-4rem)] md:right-0 md:h-auto md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_right,transparent,black_38%),linear-gradient(to_bottom,black_84%,transparent)]">
+          <source media="(max-width: 767px)" srcSet="/portrait.webp" type="image/webp" />
+          <img
+            ref={photoRef}
+            src="/portrait-hd.jpg"
+            alt="Lucas Loepke on a Yamaha R7 motorcycle"
+            width={1700}
+            height={2550}
+            // From md up, the top 27% of the photo sits above the hero at any window size, leaving the helmet just below the navbar.
+            className="h-full w-full object-cover object-[50%_55%] will-change-transform md:ml-[calc((100%-var(--photo-w))/2)] md:mt-[calc(var(--photo-w)*-0.405)] md:h-auto md:w-[var(--photo-w)] md:max-w-none md:[--photo-w:max(100%,40.5rem,calc((100svh-73px)*1.122))]"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
 
-        <section className="relative z-10 py-16 sm:py-24">
-          <div className="route-transition">
-            <Container className="relative">
-              <div className="max-w-2xl">
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">
-                  Lucas Loepke
-                </h1>
-                <p className="mt-4 text-neutral-200/75">
-                  Computer Science & Economics @ Pitt{" "}
-                  <br />
-                  Software Engineer Intern for Experience Generation @ SAP
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    to="/projects"
-                    className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-150 hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-neutral-950"
-                  >
-                    View Projects
-                  </Link>
-                  <a
-                    href="/Loepke_Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-medium text-neutral-50 transition-colors duration-150 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-neutral-950"
-                  >
-                    View Resume
-                  </a>
-                </div>
+        {/* The hero runs past the first screen so the photo's fade starts below the fold; the intro stays centered on that screen. */}
+        <Container className="relative md:min-h-[max(44rem,calc((100svh-73px)*1.22))]">
+          <div ref={introRef} className="route-transition relative pb-16 pt-4 will-change-transform md:flex md:h-[max(36rem,calc(100svh-73px))] md:items-center md:py-0">
+            <div>
+              <h1 className="text-4xl font-semibold tracking-tight text-neutral-50 sm:text-5xl">
+                Lucas Loepke
+              </h1>
+              <p className="mt-4 text-lg text-neutral-200/75 md:text-base lg:text-lg">
+                Computer Science & Economics @ Pitt{" "}
+                <br />
+                Software Engineer Intern @ SAP
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link to="/projects" className="glass-button glass-button-primary">
+                  <span>View Projects</span>
+                </Link>
+                <a
+                  href="/Loepke_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-button"
+                >
+                  <span>View Resume</span>
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex min-h-11 items-center px-2 text-sm font-medium text-accent-text transition-colors duration-150 hover:text-white"
+                >
+                  Email me
+                </a>
               </div>
-              <picture className="absolute top-0 right-8 z-10 hidden w-[clamp(13rem,22vw,16rem)] -translate-x-20 -translate-y-12 md:block">
-                <source srcSet="/portrait.webp" type="image/webp" />
-                <img
-                  src="/portrait.jpg"
-                  alt="Lucas Loepke on a Yamaha R7 motorcycle"
-                  width={900}
-                  height={1350}
-                  className="aspect-[2/3] w-full rounded-2xl object-cover shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                />
-              </picture>
-            </Container>
+            </div>
           </div>
-        </section>
+        </Container>
+      </section>
 
-        <section className="relative z-10 py-16">
-          <div className="route-transition">
-            <Container>
-              <SectionHeading className="mb-8 text-white">About</SectionHeading>
-              <div className="max-w-[40rem] space-y-4 text-neutral-200/75">
-                <p>
-                  I started writing code{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">over a decade ago</span>, building Minecraft mini-game servers that actually turned a profit. I've spent the last{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">three years</span>{" "}
-                  interning across three rotations at{" "}
-                  <a
-                    href="https://sap.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-white/40 underline-offset-2 transition-colors hover:decoration-white"
-                  >
-                    SAP
-                  </a>
-                  , moving from internal analytics tooling to full-stack iOS development to now building agentic AI platforms for enterprise customers.
-                </p>
-                <p>
-                  I'm finishing my CS degree at Pitt and looking for{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">new-grad SWE roles</span>, open to start as early as{" "}
-                  <span className="rounded-[2px] bg-accent/25 px-1 py-0.5 font-medium text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">June 2027</span>. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
-                </p>
-              </div>
-            </Container>
+      <section className="relative py-16 md:-mt-24">
+        <Container>
+          <Reveal>
+            <SectionHeading className="mb-8">About</SectionHeading>
+            <div className="max-w-[40rem] space-y-4 leading-relaxed text-neutral-200/75">
+              <p>
+                I started writing code <span className="font-medium text-white">over a decade ago</span>, building Minecraft mini-game servers that actually turned a profit. I've spent the last three years interning across three rotations at{" "}
+                <a
+                  href="https://sap.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-white/40 underline-offset-2 transition-colors hover:decoration-white"
+                >
+                  SAP
+                </a>
+                , moving from internal analytics tooling to full-stack iOS development to now building agentic AI platforms for enterprise customers.
+              </p>
+              <p>
+                I'm finishing my CS degree at Pitt and looking for <span className="font-medium text-white">new-grad SWE roles</span>, open to start as early as <span className="font-medium text-white">June 2027</span>. Outside of work I ski, ride motorcycles, love trying new teas, and build cool projects.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <Container>
+          <Reveal className="mb-12 flex items-center justify-between gap-4">
+            <SectionHeading>Featured Projects</SectionHeading>
+            <Link
+              to="/projects"
+              className="inline-flex min-h-11 items-center text-sm font-medium text-accent-text transition-colors duration-150 hover:text-white"
+            >
+              View all →
+            </Link>
+          </Reveal>
+
+          <div className="space-y-20 sm:space-y-28">
+            {featuredSlugs.map((slug, index) => {
+              const project = projects.find((p) => p.slug === slug);
+              return project ? <ProjectFeature key={slug} project={project} flip={index % 2 === 1} /> : null;
+            })}
           </div>
-        </section>
-
-        {/* Taper off aquatic background after About */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-b from-transparent to-white dark:to-[#0b1220]" />
-      </div>
+        </Container>
+      </section>
 
       <section className="py-16">
-        <div className="route-transition">
-          <Container>
+        <Container>
+          <Reveal>
             <SectionHeading className="mb-6">Experience</SectionHeading>
+          </Reveal>
 
-            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
-              {experience.map((entry) => {
-                const companyIcon = !entry.logoSrc && entry.simpleIconSlug
-                  ? getSimpleIcon(entry.simpleIconSlug)
-                  : null;
-                const companyClassName = [
-                  "inline-flex items-center gap-1.5 font-semibold transition-colors",
-                  entry.companyClassName ??
-                    "text-neutral-900 hover:text-accent dark:text-neutral-100 dark:hover:text-accent",
-                ].join(" ");
-                const companyIconEl = entry.logoSrc ? (
-                  <img
-                    src={entry.logoSrc}
-                    alt=""
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 shrink-0 object-contain"
-                    aria-hidden
-                  />
-                ) : companyIcon ? (
-                  <span
-                    className="flex h-4 w-4 shrink-0 items-center justify-center [&>svg]:h-4 [&>svg]:w-4 [&>svg_path]:fill-current"
-                    style={companyIcon.hex ? { color: `#${companyIcon.hex}` } : undefined}
-                    dangerouslySetInnerHTML={{ __html: companyIcon.svg }}
-                    aria-hidden
-                  />
-                ) : null;
-
-                return (
-                <li
-                  key={entry.id}
-                  className="grid grid-cols-1 gap-x-8 gap-y-1 px-4 py-5 transition-colors duration-150 hover:bg-accent/5 dark:hover:bg-accent/10 sm:grid-cols-[11rem_1fr]"
+          <ul className="flex flex-col divide-y divide-neutral-800">
+            {experience.map((entry, index) => (
+              <li key={entry.id}>
+                <Reveal
+                  delay={index * 80}
+                  className="grid grid-cols-1 gap-x-8 gap-y-1 rounded-lg px-4 py-5 transition-colors duration-150 hover:bg-accent/10 sm:grid-cols-[11rem_1fr]"
                 >
-                  <div className="flex items-baseline justify-between gap-x-3 text-sm text-neutral-500 dark:text-neutral-400 sm:block">
+                  <div className="flex items-baseline justify-between gap-x-3 text-sm text-neutral-400 sm:block">
                     <span className="whitespace-nowrap">{entry.dates}</span>
                     <span className="whitespace-nowrap sm:hidden">{entry.location}</span>
                   </div>
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-                      {entry.companyUrl ? (
-                        <a
-                          href={entry.companyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={companyClassName}
-                        >
-                          {companyIconEl}
-                          {entry.company}
-                        </a>
-                      ) : (
-                        <span className={companyClassName}>
-                          {companyIconEl}
-                          {entry.company}
-                        </span>
-                      )}
-                      <span className="hidden text-sm text-neutral-500 dark:text-neutral-400 sm:inline">
-                        {entry.location}
-                      </span>
+                      <h3 className="inline-flex items-center gap-2 font-semibold text-neutral-100">
+                        {entry.logoSrc && (
+                          <a href={entry.companyUrl} target="_blank" rel="noopener noreferrer" aria-label={entry.company}>
+                            <img src={entry.logoSrc} alt="" width={28} height={28} className="h-7 w-7 shrink-0 object-contain" />
+                          </a>
+                        )}
+                        {entry.title}
+                      </h3>
+                      <span className="hidden text-sm text-neutral-400 sm:inline">{entry.location}</span>
                     </div>
-                    <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                    <div className="mt-1 text-sm text-neutral-400">
                       {entry.role}
-                      <span className="mx-1.5 text-neutral-400 dark:text-neutral-600">·</span>
+                      <span className="mx-1.5 text-neutral-600">·</span>
                       {entry.detail}
                     </div>
+                    <p className="mt-2 max-w-[38rem] text-sm leading-relaxed text-neutral-200/75">{entry.outcome}</p>
                   </div>
-                </li>
-                );
-              })}
-            </ul>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
 
-            <p className="mt-6 px-4 text-sm">
-              <span className="text-neutral-400 dark:text-neutral-500">↳ </span>
-              {education.schoolUrl ? (
-                <a
-                  href={education.schoolUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-amber-600 underline decoration-transparent underline-offset-2 transition-colors hover:decoration-amber-600 dark:text-amber-400 dark:hover:decoration-amber-400"
-                >
-                  {education.school}
-                </a>
-              ) : (
-                <span className="text-amber-600 dark:text-amber-400">{education.school}</span>
-              )}
-              <span className="text-neutral-500 dark:text-neutral-400">, </span>
-              <span className="text-neutral-700 dark:text-neutral-200">{education.degree}</span>
-              <span className="text-neutral-500 dark:text-neutral-400">
-                {" · "}
-                {education.date}
-              </span>
-            </p>
-          </Container>
-        </div>
+          <p className="mt-6 px-4 text-sm">
+            <svg
+              viewBox="0 0 16 16"
+              className="mr-1.5 inline-block h-3.5 w-3.5 align-[-0.125em] text-neutral-500"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M3 2v5.5a3 3 0 0 0 3 3h7.5M10.5 7.5l3 3-3 3" />
+            </svg>
+            <a
+              href={education.schoolUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 underline decoration-transparent underline-offset-2 transition-colors hover:decoration-amber-400"
+            >
+              {education.school}
+            </a>
+            <span className="text-neutral-400">, </span>
+            <span className="text-neutral-200">{education.degree}</span>
+            <span className="text-neutral-400">
+              {" · "}
+              {education.date}
+            </span>
+          </p>
+        </Container>
       </section>
 
-      <section
-        ref={gridSectionRef}
-        className="relative py-16 sm:py-24 overflow-hidden"
-        onMouseMove={handleGridMouseMove}
-        onMouseLeave={handleGridMouseLeave}
-      >
-        <InteractiveGridPattern className="absolute inset-0 z-0" mousePosition={mousePosition} />
-        <div className="route-transition">
-          <Container className="relative z-10 text-neutral-100">
-            <div className="mb-8 flex items-center justify-between gap-4">
-              <SectionHeading className="text-white">Featured Projects</SectionHeading>
-              <Link
-                to="/projects"
-                className="rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-all duration-150 hover:bg-neutral-100 hover:text-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:hover:bg-neutral-800 dark:focus:ring-offset-neutral-950"
-              >
-                View all →
-              </Link>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </div>
-          </Container>
-        </div>
+      <section className="relative mx-auto max-w-4xl overflow-hidden py-24 text-center sm:py-32">
+        <HoverGrid className="absolute inset-0" />
+        <Container className="relative">
+          <Reveal>
+            <h2 className="text-2xl font-semibold tracking-tight text-neutral-50 sm:text-3xl">
+              Hiring for June 2027?
+            </h2>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="mt-3 inline-flex min-h-11 items-center text-lg font-medium text-accent-text transition-colors duration-150 hover:text-white"
+            >
+              {EMAIL}
+            </a>
+          </Reveal>
+        </Container>
       </section>
     </>
   );

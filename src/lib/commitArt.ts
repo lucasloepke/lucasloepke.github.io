@@ -68,6 +68,28 @@ export function isValidCell(range: CalendarRange, col: number, row: number): boo
 
 export const idx = (col: number, row: number) => col * ROWS + row;
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** Which columns get a month name above the graph, placed the way GitHub does. */
+export function monthLabels(range: CalendarRange): { col: number; text: string }[] {
+  const labels: { col: number; text: string }[] = [];
+  let lastMonth = -1;
+  for (let col = 0; col < range.cols; col++) {
+    for (let row = 0; row < ROWS; row++) {
+      if (!isValidCell(range, col, row)) continue;
+      const d = new Date(cellDate(range, col, row));
+      const m = d.getUTCMonth();
+      if (m !== lastMonth && (col === 0 || d.getUTCDate() <= 7)) {
+        const prev = labels[labels.length - 1];
+        if (!prev || col - prev.col >= 3) labels.push({ col, text: MONTHS[m] });
+        lastMonth = m;
+      }
+      break;
+    }
+  }
+  return labels;
+}
+
 export function emptyCells(): Level[] {
   return new Array<Level>(MAX_COLS * ROWS).fill(0);
 }
