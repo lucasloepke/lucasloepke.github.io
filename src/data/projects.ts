@@ -99,7 +99,7 @@ export const projects: Project[] = [
     title: "This site",
     year: 2026,
     outcome: "You're looking at it",
-    description: "Built with Vite, React, and Tailwind, and deployed to GitHub Pages.",
+    description: "Built with Vite, React, and Tailwind, and deployed to GitHub Pages. Fun fact: I created this repo in 2016, for my first attempts at a website.",
     tech: ["react", "typescript", "tailwind", "vite", "javascript", "github"],
     links: { github: "https://github.com/lucasloepke/lucasloepke.github.io" },
   },
