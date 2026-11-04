@@ -68,9 +68,27 @@ interface ProjectFeatureProps {
 
 /** A project shown large, with its image beside the details. */
 export function ProjectFeature({ project, flip = false, headingLevel: Heading = "h3", showYear = false }: ProjectFeatureProps) {
+  const media = projectMedia[project.slug];
+  const demo = project.links?.live;
+
   return (
     <article className={`grid items-center gap-8 md:gap-12 ${flip ? "md:grid-cols-[5fr_7fr]" : "md:grid-cols-[7fr_5fr]"}`}>
-      <Reveal className={`min-w-0 ${flip ? "md:order-2" : ""}`}>{projectMedia[project.slug]}</Reveal>
+      <Reveal className={`min-w-0 ${flip ? "md:order-2" : ""}`}>
+        {/* The Commit Art preview is already a link to its page. */}
+        {demo && project.slug !== "commit-art" ? (
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.liveLabel}: ${project.title}`}
+            className="block rounded-2xl transition-transform duration-300 hover:scale-[1.015]"
+          >
+            {media}
+          </a>
+        ) : (
+          media
+        )}
+      </Reveal>
       <Reveal delay={120} className={`min-w-0 ${flip ? "md:order-1" : ""}`}>
         <Heading className="text-2xl font-semibold tracking-tight text-neutral-50">{project.title}</Heading>
         {showYear && <p className="mt-1 text-sm tabular-nums text-neutral-400">{project.year}</p>}

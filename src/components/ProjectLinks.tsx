@@ -26,7 +26,7 @@ export function ProjectLinks({ project }: { project: Project }) {
           href={links.live}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${title} on ${liveLabel}`}
+          aria-label={`${liveLabel}: ${title}`}
           className={linkClass}
         >
           {liveLabel}
