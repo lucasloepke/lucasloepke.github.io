@@ -66,7 +66,7 @@ const svg = `
   <text x="92" y="315" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#60a5fa">Software Engineer</text>
 
   <text x="92" y="410" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#cbd5e1">Computer Science &amp; Economics @ Pitt</text>
-  <text x="92" y="452" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#cbd5e1">Experience Generation @ SAP</text>
+  <text x="92" y="452" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#cbd5e1">Application AI @ SAP</text>
 
   <text x="92" y="560" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#94a3b8">lucasloepke.github.io</text>
 </svg>

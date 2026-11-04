@@ -16,14 +16,14 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
-    id: "sap-experience-generation",
+    id: "sap-application-ai",
     dates: "May 2026 — Present",
     company: "SAP",
     companyUrl: "https://sap.com",
     logoSrc: "/sap-logo.png",
     title: "Agentic AI platform",
     role: "Software Engineer Intern",
-    detail: "Experience Generation",
+    detail: "Application AI",
     outcome: "Building core AI tooling for SAP's Forward Deployed Engineering work with enterprise customers, including a collaborative workspace with permission-aware agents. Also built a Claude Code review skill used by 20+ engineers.",
     location: "Palo Alto, CA",
   },
