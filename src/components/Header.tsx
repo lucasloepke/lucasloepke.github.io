@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
@@ -18,6 +19,28 @@ const iconLinks = [
 export function Header() {
   const location = useLocation();
   const pathname = location.pathname || "/";
+  const navRef = useRef<HTMLElement>(null);
+  const [pill, setPill] = useState<{ x: number; width: number } | null>(null);
+  const [pillReady, setPillReady] = useState(false);
+
+  // Measure the current link so the pill can slide to it; pages outside the nav hide it.
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const measure = () => {
+      const active = nav.querySelector<HTMLElement>('[aria-current="page"]');
+      setPill((prev) => (active ? { x: active.offsetLeft, width: active.offsetWidth } : prev && { ...prev, width: 0 }));
+    };
+    measure();
+    // Skip the transition for the first placement, then animate later moves.
+    const frame = requestAnimationFrame(() => setPillReady(true));
+    const ro = new ResizeObserver(measure);
+    ro.observe(nav);
+    return () => {
+      cancelAnimationFrame(frame);
+      ro.disconnect();
+    };
+  }, [pathname]);
 
   return (
     // The strip above the bar keeps overscroll at the top the same navy as the bar.
@@ -36,7 +59,17 @@ export function Header() {
             height={40}
           />
         </Link>
-        <nav className="flex items-center justify-center gap-1" aria-label="Main navigation">
+        <nav ref={navRef} className="relative flex items-center justify-center gap-1" aria-label="Main navigation">
+          <span
+            aria-hidden
+            data-ready={pillReady}
+            className="nav-pill pointer-events-none absolute inset-y-0 left-0 rounded-lg bg-white/[0.08]"
+            style={{
+              width: pill?.width ?? 0,
+              opacity: pill?.width ? 1 : 0,
+              transform: `translateX(${pill?.x ?? 0}px)`,
+            }}
+          />
           {navLinks.map(({ to, label }) => {
             const isActive = pathname === to || (to === "/" && pathname === "/");
             return (
@@ -44,7 +77,7 @@ export function Header() {
                 key={to}
                 to={to}
                 aria-current={isActive ? "page" : undefined}
-                className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 sm:px-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0b1220] ${
+                className={`relative rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 sm:px-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0b1220] ${
                   isActive
                     ? "text-accent-text hover:bg-neutral-100 dark:hover:bg-neutral-800"
                     : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Container";
 import { Seo } from "../components/Seo";
@@ -52,7 +52,7 @@ export function Home() {
 
       <section className="relative overflow-hidden">
         {/* The fade lives on the picture so it stays put while the photo drifts inside it. */}
-        <picture className="relative block h-80 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:absolute md:inset-y-0 md:left-[calc(50%-4rem)] md:right-0 md:h-auto md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_right,transparent,black_38%),linear-gradient(to_bottom,black_84%,transparent)]">
+        <picture className="hero-photo relative block h-80 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:absolute md:inset-y-0 md:left-[calc(50%-4rem)] md:right-0 md:h-auto md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_right,transparent,black_38%),linear-gradient(to_bottom,black_84%,transparent)]">
           <source media="(max-width: 767px)" srcSet="/portrait.webp" type="image/webp" />
           <img
             ref={photoRef}
@@ -70,17 +70,17 @@ export function Home() {
 
         {/* The hero runs past the first screen so the photo's fade starts below the fold; the intro stays centered on that screen. */}
         <Container className="relative md:min-h-[max(44rem,calc((100svh-73px)*1.22))]">
-          <div ref={introRef} className="route-transition relative pb-16 pt-4 will-change-transform md:flex md:h-[max(36rem,calc(100svh-73px))] md:items-center md:py-0">
+          <div ref={introRef} className="relative pb-16 pt-4 will-change-transform md:flex md:h-[max(36rem,calc(100svh-73px))] md:items-center md:py-0">
             <div>
-              <h1 className="text-4xl font-semibold tracking-tight text-neutral-50 sm:text-5xl">
+              <h1 className="hero-line text-4xl font-semibold tracking-tight text-neutral-50 sm:text-5xl">
                 Lucas Loepke
               </h1>
-              <p className="mt-4 text-lg text-neutral-200/75 md:text-base lg:text-lg">
+              <p style={{ "--line": 1 } as CSSProperties} className="hero-line mt-4 text-lg text-neutral-200/75 md:text-base lg:text-lg">
                 Computer Science & Economics @ Pitt{" "}
                 <br />
                 Software Engineer Intern @ SAP
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div style={{ "--line": 2 } as CSSProperties} className="hero-line mt-8 flex flex-wrap items-center gap-3">
                 <Link to="/projects" className="glass-button glass-button-primary">
                   <span>View Projects</span>
                 </Link>
@@ -139,7 +139,7 @@ export function Home() {
               to="/projects"
               className="inline-flex min-h-11 items-center text-sm font-medium text-accent-text transition-colors duration-150 hover:text-white"
             >
-              View all →
+              View all <span className="link-arrow ml-1" aria-hidden>→</span>
             </Link>
           </Reveal>
 

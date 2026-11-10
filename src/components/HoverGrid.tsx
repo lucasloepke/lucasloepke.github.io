@@ -5,6 +5,8 @@ const RADIUS = 2.5;
 const NEARBY_GLOW = 0.3;
 const GLOW_BLUR = 32;
 const FADE_PER_FRAME = 0.018;
+const WAVE_SPEED = 0.22;
+const WAVE_PEAK = 0.6;
 
 /**
  * Faint grid where the square under the cursor lights up and fades after it
@@ -19,7 +21,10 @@ export function HoverGrid({ className = "" }: { className?: string }) {
     const ctx = canvas?.getContext("2d");
     if (!canvas || !host || !ctx) return;
 
-    const fade = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.2 : FADE_PER_FRAME;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fade = reduceMotion ? 0.2 : FADE_PER_FRAME;
+    // Radius, in cells, of the ring that crosses the grid when it first comes into view.
+    let wave = -1;
     let cols = 0;
     let rows = 0;
     let energy = new Float32Array(0);
@@ -40,6 +45,17 @@ export function HoverGrid({ className = "" }: { className?: string }) {
       frame = 0;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       let active = false;
+      if (wave >= 0) {
+        const reach = Math.hypot(cols, rows) / 2;
+        const strength = WAVE_PEAK * (1 - wave / reach);
+        for (let i = 0; i < energy.length; i++) {
+          const distance = Math.hypot((i % cols) + 0.5 - cols / 2, Math.floor(i / cols) + 0.5 - rows / 2);
+          if (Math.abs(distance - wave) < 0.6) energy[i] = Math.max(energy[i], strength);
+        }
+        wave += WAVE_SPEED;
+        if (wave > reach) wave = -1;
+        active = true;
+      }
       for (let i = 0; i < energy.length; i++) {
         if (energy[i] <= 0) continue;
         const x = (i % cols) * CELL;
@@ -80,8 +96,21 @@ export function HoverGrid({ className = "" }: { className?: string }) {
     resize();
     host.addEventListener("pointermove", onMove);
 
+    // Touch visitors never hover, so the grid shows what it does once on arrival.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || reduceMotion) return;
+        io.disconnect();
+        wave = 0;
+        if (!frame) frame = requestAnimationFrame(draw);
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(canvas);
+
     return () => {
       cancelAnimationFrame(frame);
+      io.disconnect();
       ro.disconnect();
       host.removeEventListener("pointermove", onMove);
     };
