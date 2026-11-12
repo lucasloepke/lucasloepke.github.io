@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Container";
 import { Seo } from "../components/Seo";
@@ -16,6 +16,28 @@ const featuredSlugs = ["simple-canvas-tasks", "cleanup-crew", "commit-art"];
 export function Home() {
   const photoRef = useRef<HTMLImageElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
+  const [photoReady, setPhotoReady] = useState(false);
+
+  // Hold the photo's entrance until it has downloaded and the tab is in front;
+  // otherwise a cold load or a background tab plays it to nobody.
+  useEffect(() => {
+    const img = photoRef.current;
+    if (!img) return;
+    const whenVisible = () => {
+      if (document.visibilityState === "visible") setPhotoReady(true);
+      else document.addEventListener("visibilitychange", whenVisible, { once: true });
+    };
+    if (img.complete) whenVisible();
+    else {
+      img.addEventListener("load", whenVisible, { once: true });
+      img.addEventListener("error", whenVisible, { once: true });
+    }
+    return () => {
+      img.removeEventListener("load", whenVisible);
+      img.removeEventListener("error", whenVisible);
+      document.removeEventListener("visibilitychange", whenVisible);
+    };
+  }, []);
 
   // The hero drifts apart and fades as it scrolls away.
   useEffect(() => {
@@ -52,7 +74,7 @@ export function Home() {
 
       <section className="relative overflow-hidden">
         {/* The fade lives on the picture so it stays put while the photo drifts inside it. */}
-        <picture className="hero-photo relative block h-80 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:absolute md:inset-y-0 md:left-[calc(50%-4rem)] md:right-0 md:h-auto md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_right,transparent,black_38%),linear-gradient(to_bottom,black_84%,transparent)]">
+        <picture className={`${photoReady ? "hero-photo" : "opacity-0"} relative block h-80 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:absolute md:inset-y-0 md:left-[calc(50%-4rem)] md:right-0 md:h-auto md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_right,transparent,black_38%),linear-gradient(to_bottom,black_84%,transparent)]`}>
           <source media="(max-width: 767px)" srcSet="/portrait.webp" type="image/webp" />
           <img
             ref={photoRef}
