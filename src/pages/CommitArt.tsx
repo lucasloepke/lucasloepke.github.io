@@ -341,7 +341,7 @@ export function CommitArt() {
                 className="mr-2 flex items-center gap-1"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (text.trim()) commit(stampText(cells, range, text, brush || 4));
+                  if (text.trim()) commit(stampText(emptyCells(), range, text, brush || 4));
                 }}
               >
                 <input
